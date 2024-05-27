@@ -100,7 +100,7 @@ class DatabaseManager {
     }
     
     func getUserById(_ id: Int) -> Client? {
-        let query = "SELECT * FROM users WHERE id = ?;"
+        let query = "SELECT * FROM client WHERE id = ?;"
         var stmt: OpaquePointer?
         
         if sqlite3_prepare_v2(db, query, -1, &stmt, nil) == SQLITE_OK {
@@ -127,6 +127,245 @@ class DatabaseManager {
         sqlite3_finalize(stmt)
         return nil
     }
-    
-    // Other CRUD operations for users, clinics, departments, and appo
+        // CRUD operations for clinics
+        func addClinic(_ clinic: Clinic) {
+            let insertQuery = "INSERT INTO clinics (name, address, address_cords, is_pediatric, is_hospital) VALUES (?, ?, ?, ?, ?);"
+            
+            var stmt: OpaquePointer?
+            
+            if sqlite3_prepare_v2(db, insertQuery, -1, &stmt, nil) == SQLITE_OK {
+                sqlite3_bind_text(stmt, 1, (clinic.name as NSString).utf8String, -1, nil)
+                sqlite3_bind_text(stmt, 2, (clinic.address as NSString).utf8String, -1, nil)
+                sqlite3_bind_text(stmt, 3, (clinic.addressCoords as NSString).utf8String, -1, nil)
+                sqlite3_bind_int(stmt, 4, clinic.isPediatric ? 1 : 0)
+                sqlite3_bind_int(stmt, 5, clinic.isHospital ? 1 : 0)
+                
+                if sqlite3_step(stmt) != SQLITE_DONE {
+                    print("Insert failed: \(String(cString: sqlite3_errmsg(db)))")
+                }
+            } else {
+                print("Error preparing insert: \(String(cString: sqlite3_errmsg(db)))")
+            }
+            
+            sqlite3_finalize(stmt)
+        }
+        
+        func getAllClinics() -> [Clinic] {
+            let query = "SELECT * FROM clinics;"
+            var stmt: OpaquePointer?
+            var result = [Clinic]()
+            
+            if sqlite3_prepare_v2(db, query, -1, &stmt, nil) == SQLITE_OK {
+                while sqlite3_step(stmt) == SQLITE_ROW {
+                    let clinic = Clinic(
+                        id: Int(sqlite3_column_int(stmt, 0)),
+                        name: String(cString: sqlite3_column_text(stmt, 1)),
+                        address: String(cString: sqlite3_column_text(stmt, 2)),
+                        addressCoords: String(cString: sqlite3_column_text(stmt, 3)),
+                        isPediatric: sqlite3_column_int(stmt, 4) != 0,
+                        isHospital: sqlite3_column_int(stmt, 5) != 0
+                    )
+                    result.append(clinic)
+                }
+            } else {
+                print("Error preparing select: \(String(cString: sqlite3_errmsg(db)))")
+            }
+            
+            sqlite3_finalize(stmt)
+            return result
+        }
+        
+        func getClinicById(_ clinicId: Int) -> Clinic? {
+            let query = "SELECT * FROM clinics WHERE id = ?;"
+            var stmt: OpaquePointer?
+            
+            if sqlite3_prepare_v2(db, query, -1, &stmt, nil) == SQLITE_OK {
+                sqlite3_bind_int(stmt, 1, Int32(clinicId))
+                
+                if sqlite3_step(stmt) == SQLITE_ROW {
+                    let clinic = Clinic(
+                        id: Int(sqlite3_column_int(stmt, 0)),
+                        name: String(cString: sqlite3_column_text(stmt, 1)),
+                        address: String(cString: sqlite3_column_text(stmt, 2)),
+                        addressCoords: String(cString: sqlite3_column_text(stmt, 3)),
+                        isPediatric: sqlite3_column_int(stmt, 4) != 0,
+                        isHospital: sqlite3_column_int(stmt, 5) != 0
+                    )
+                    sqlite3_finalize(stmt)
+                    return clinic
+                }
+            } else {
+                print("Error preparing select: \(String(cString: sqlite3_errmsg(db)))")
+            }
+            
+            sqlite3_finalize(stmt)
+            return nil
+        }
+        
+        // CRUD operations for departments
+        func addDepartment(_ department: Department) {
+            let insertQuery = "INSERT INTO departments (clinic_id, specialization) VALUES (?, ?);"
+            
+            var stmt: OpaquePointer?
+            
+            if sqlite3_prepare_v2(db, insertQuery, -1, &stmt, nil) == SQLITE_OK {
+                sqlite3_bind_int(stmt, 1, Int32(department.clinicId))
+                sqlite3_bind_text(stmt, 2, (department.specialization as NSString).utf8String, -1, nil)
+                
+                if sqlite3_step(stmt) != SQLITE_DONE {
+                    print("Insert failed: \(String(cString: sqlite3_errmsg(db)))")
+                }
+            } else {
+                print("Error preparing insert: \(String(cString: sqlite3_errmsg(db)))")
+            }
+            
+            sqlite3_finalize(stmt)
+        }
+        
+        func getDepartmentsByClinicId(_ clinicId: Int) -> [Department] {
+            let query = "SELECT * FROM departments WHERE clinic_id = ?;"
+            var stmt: OpaquePointer?
+            var result = [Department]()
+            
+            if sqlite3_prepare_v2(db, query, -1, &stmt, nil) == SQLITE_OK {
+                sqlite3_bind_int(stmt, 1, Int32(clinicId))
+                
+                while sqlite3_step(stmt) == SQLITE_ROW {
+                    let department = Department(
+                        id: Int(sqlite3_column_int(stmt, 0)),
+                        clinicId: Int(sqlite3_column_int(stmt, 1)),
+                        specialization: String(cString: sqlite3_column_text(stmt, 2))
+                    )
+                    result.append(department)
+                }
+            } else {
+                print("Error preparing select: \(String(cString: sqlite3_errmsg(db)))")
+            }
+            
+            sqlite3_finalize(stmt)
+            return result
+        }
+        
+        // CRUD operations for appointments
+        func addAppointment(_ appointment: Appointment) -> Bool {
+            let insertQuery = "INSERT INTO appointments (user_id, clinic_id, department_id, doctor_name, date) VALUES (?, ?, ?, ?, ?);"
+            
+            var stmt: OpaquePointer?
+            
+            if sqlite3_prepare_v2(db, insertQuery, -1, &stmt, nil) == SQLITE_OK {
+                sqlite3_bind_int(stmt, 1, Int32(appointment.userId))
+                sqlite3_bind_int(stmt, 2, Int32(appointment.clinicId))
+                sqlite3_bind_int(stmt, 3, Int32(appointment.departmentId))
+                sqlite3_bind_text(stmt, 4, (appointment.doctorName as NSString).utf8String, -1, nil)
+                sqlite3_bind_text(stmt, 5, (appointment.date.description as NSString).utf8String, -1, nil)
+                
+                if sqlite3_step(stmt) != SQLITE_DONE {
+                    print("Insert failed: \(String(cString: sqlite3_errmsg(db)))")
+                    return false
+                }
+                return true
+            } else {
+                print("Error preparing insert: \(String(cString: sqlite3_errmsg(db)))")
+                return false
+            }
+            
+            sqlite3_finalize(stmt)
+        }
+        
+        func deleteAppointment(_ appointmentId: Int) -> Bool {
+            let deleteQuery = "DELETE FROM appointments WHERE id = ?;"
+            
+            var stmt: OpaquePointer?
+            
+            if sqlite3_prepare_v2(db, deleteQuery, -1, &stmt, nil) == SQLITE_OK {
+                sqlite3_bind_int(stmt, 1, Int32(appointmentId))
+                
+                if sqlite3_step(stmt) != SQLITE_DONE {
+                    print("Delete failed: \(String(cString: sqlite3_errmsg(db)))")
+                          return false
+                      }
+                      return true
+                  } else {
+                      print("Error preparing delete: \(String(cString: sqlite3_errmsg(db)))")
+                      return false
+                  }
+                  
+                  sqlite3_finalize(stmt)
+              }
+              
+              func updateAppointmentDate(_ appointmentId: Int, newDate: Date) -> Bool {
+                  let updateQuery = "UPDATE appointments SET date = ? WHERE id = ?;"
+                  
+                  var stmt: OpaquePointer?
+                  
+                  if sqlite3_prepare_v2(db, updateQuery, -1, &stmt, nil) == SQLITE_OK {
+                      sqlite3_bind_text(stmt, 1, (newDate.description as NSString).utf8String, -1, nil)
+                      sqlite3_bind_int(stmt, 2, Int32(appointmentId))
+                      
+                      if sqlite3_step(stmt) != SQLITE_DONE {
+                          print("Update failed: \(String(cString: sqlite3_errmsg(db)))")
+                          return false
+                      }
+                      return true
+                  } else {
+                      print("Error preparing update: \(String(cString: sqlite3_errmsg(db)))")
+                      return false
+                  }
+                  
+                  sqlite3_finalize(stmt)
+              }
+              
+              func getAppointmentsByUserId(_ userId: Int) -> [Appointment] {
+                  let query = "SELECT * FROM appointments WHERE user_id = ?;"
+                  var stmt: OpaquePointer?
+                  var result = [Appointment]()
+                  
+                  if sqlite3_prepare_v2(db, query, -1, &stmt, nil) == SQLITE_OK {
+                      sqlite3_bind_int(stmt, 1, Int32(userId))
+                      
+                      while sqlite3_step(stmt) == SQLITE_ROW {
+                          let appointment = Appointment(
+                              id: Int(sqlite3_column_int(stmt, 0)),
+                              userId: Int(sqlite3_column_int(stmt, 1)),
+                              clinicId: Int(sqlite3_column_int(stmt, 2)),
+                              departmentId: Int(sqlite3_column_int(stmt, 3)),
+                              doctorName: String(cString: sqlite3_column_text(stmt, 4)),
+                              date: Date() // Convert from string if needed
+                          )
+                          result.append(appointment)
+                      }
+                  } else {
+                      print("Error preparing select: \(String(cString: sqlite3_errmsg(db)))")
+                  }
+                  
+                  sqlite3_finalize(stmt)
+                  return result
+              }
+              
+              func getAppointmentById(_ appointmentId: Int) -> Appointment? {
+                  let query = "SELECT * FROM appointments WHERE id = ?;"
+                  var stmt: OpaquePointer?
+                  
+                  if sqlite3_prepare_v2(db, query, -1, &stmt, nil) == SQLITE_OK {
+                      sqlite3_bind_int(stmt, 1, Int32(appointmentId))
+                      
+                      if sqlite3_step(stmt) == SQLITE_ROW {
+                          let appointment = Appointment(
+                              id: Int(sqlite3_column_int(stmt, 0)),
+                              userId: Int(sqlite3_column_int(stmt, 1)),
+                              clinicId: Int(sqlite3_column_int(stmt, 2)),
+                              departmentId: Int(sqlite3_column_int(stmt, 3)),
+                              doctorName: String(cString: sqlite3_column_text(stmt, 4)),
+                              date: Date() // Convert from string if needed
+                          )
+                          sqlite3_finalize(stmt)
+                          return appointment
+                      }
+                  } else {
+                      print("Error preparing select: \(String(cString: sqlite3_errmsg(db)))")
+                  }
+                  
+                  sqlite3_finalize(stmt)
+                  return nil
+              }
 }

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeDatabase() {
-        guard let databasePath = Bundle.main.path(forResource: "test", ofType: "db") else {
+        guard let databasePath = Bundle.main.path(forResource: "database", ofType: "db") else {
             fatalError("Db file not found")
         }
         

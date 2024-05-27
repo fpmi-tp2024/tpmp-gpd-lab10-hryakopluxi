@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 struct Clinic: Codable {
     var id: Int
     var name: String
