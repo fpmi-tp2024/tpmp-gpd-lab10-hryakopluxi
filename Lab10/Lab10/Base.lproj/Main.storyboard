@@ -277,10 +277,10 @@
             </objects>
             <point key="canvasLocation" x="-190.07633587786259" y="-673.23943661971839"/>
         </scene>
-        <!--View Controller-->
+        <!--Clinics Map View Controller-->
         <scene sceneID="chB-tH-HV0">
             <objects>
-                <viewController id="bs4-0O-5q4" sceneMemberID="viewController">
+                <viewController id="bs4-0O-5q4" customClass="ClinicsMapViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lEo-GH-cbU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -336,6 +336,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="9FR-SW-EpV"/>
+                    <connections>
+                        <outlet property="clinicAddressLabel" destination="Q9D-ZA-Upm" id="j1E-nn-hm4"/>
+                        <outlet property="clinicDescriptionTextView" destination="KIc-j2-1E1" id="1a6-YQ-piD"/>
+                        <outlet property="clinicNameLabel" destination="lbp-0Y-Bkt" id="32K-Gk-Kbs"/>
+                        <outlet property="mapView" destination="Qk3-0u-vuH" id="kJ6-2f-X7D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2oj-2u-mp7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

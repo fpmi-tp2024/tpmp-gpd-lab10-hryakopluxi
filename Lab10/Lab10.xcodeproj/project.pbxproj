@@ -23,17 +23,17 @@
 		670E8CA12C04C5F20076BA0F /* Clinic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CA02C04C5F20076BA0F /* Clinic.swift */; };
 		670E8CA32C04C61C0076BA0F /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CA22C04C61C0076BA0F /* Appointment.swift */; };
 		670E8CA52C04C64B0076BA0F /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CA42C04C64B0076BA0F /* Department.swift */; };
-		670E8CA72C04CE1E0076BA0F /* test.db in Resources */ = {isa = PBXBuildFile; fileRef = 670E8CA62C04CE1E0076BA0F /* test.db */; };
 		670E8CA92C04D15D0076BA0F /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CA82C04D15D0076BA0F /* ClientController.swift */; };
 		670E8CAB2C04D1F90076BA0F /* ClinicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CAA2C04D1F90076BA0F /* ClinicController.swift */; };
 		670E8CAD2C04D6120076BA0F /* AppointmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CAC2C04D6120076BA0F /* AppointmentController.swift */; };
 		670E8CB02C04D6640076BA0F /* DepartmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CAF2C04D6640076BA0F /* DepartmentController.swift */; };
-		670E8CB22C04D8760076BA0F /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 670E8CB12C04D8760076BA0F /* database.db */; };
 		670E8CB42C050DEB0076BA0F /* LoginRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CB32C050DEB0076BA0F /* LoginRegisterViewController.swift */; };
 		670E8CB82C050E780076BA0F /* ClinicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CB72C050E780076BA0F /* ClinicsViewController.swift */; };
 		670E8CBA2C050E970076BA0F /* DepartmanetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CB92C050E970076BA0F /* DepartmanetsViewController.swift */; };
 		670E8CBC2C050EC00076BA0F /* AppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CBB2C050EC00076BA0F /* AppointmentsViewController.swift */; };
 		670E8CBE2C0534FD0076BA0F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CBD2C0534FD0076BA0F /* Validator.swift */; };
+		670E8CC02C0542C70076BA0F /* ClinicsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CBF2C0542C70076BA0F /* ClinicsMapViewController.swift */; };
+		670E8CC22C0546300076BA0F /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 670E8CC12C0546300076BA0F /* database.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,17 +74,17 @@
 		670E8CA02C04C5F20076BA0F /* Clinic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clinic.swift; sourceTree = "<group>"; };
 		670E8CA22C04C61C0076BA0F /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		670E8CA42C04C64B0076BA0F /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
-		670E8CA62C04CE1E0076BA0F /* test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.db; sourceTree = "<group>"; };
 		670E8CA82C04D15D0076BA0F /* ClientController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientController.swift; sourceTree = "<group>"; };
 		670E8CAA2C04D1F90076BA0F /* ClinicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicController.swift; sourceTree = "<group>"; };
 		670E8CAC2C04D6120076BA0F /* AppointmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentController.swift; sourceTree = "<group>"; };
 		670E8CAF2C04D6640076BA0F /* DepartmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentController.swift; sourceTree = "<group>"; };
-		670E8CB12C04D8760076BA0F /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = database.db; path = ../../../../Documents/database.db; sourceTree = "<group>"; };
 		670E8CB32C050DEB0076BA0F /* LoginRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterViewController.swift; sourceTree = "<group>"; };
 		670E8CB72C050E780076BA0F /* ClinicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsViewController.swift; sourceTree = "<group>"; };
 		670E8CB92C050E970076BA0F /* DepartmanetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmanetsViewController.swift; sourceTree = "<group>"; };
 		670E8CBB2C050EC00076BA0F /* AppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentsViewController.swift; sourceTree = "<group>"; };
 		670E8CBD2C0534FD0076BA0F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		670E8CBF2C0542C70076BA0F /* ClinicsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsMapViewController.swift; sourceTree = "<group>"; };
+		670E8CC12C0546300076BA0F /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = database.db; path = ../../../../Documents/database.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,9 +142,8 @@
 				670E8C962C04A2810076BA0F /* Model */,
 				670E8C632C0477640076BA0F /* AppDelegate.swift */,
 				670E8C692C0477640076BA0F /* Main.storyboard */,
+				670E8CC12C0546300076BA0F /* database.db */,
 				670E8C6F2C0477650076BA0F /* Assets.xcassets */,
-				670E8CB12C04D8760076BA0F /* database.db */,
-				670E8CA62C04CE1E0076BA0F /* test.db */,
 				670E8C712C0477650076BA0F /* LaunchScreen.storyboard */,
 				670E8C742C0477650076BA0F /* Info.plist */,
 				670E8C6C2C0477640076BA0F /* Lab10.xcdatamodeld */,
@@ -188,6 +187,7 @@
 				670E8CB72C050E780076BA0F /* ClinicsViewController.swift */,
 				670E8CB92C050E970076BA0F /* DepartmanetsViewController.swift */,
 				670E8CBB2C050EC00076BA0F /* AppointmentsViewController.swift */,
+				670E8CBF2C0542C70076BA0F /* ClinicsMapViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -321,11 +321,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				670E8CB22C04D8760076BA0F /* database.db in Resources */,
+				670E8CC22C0546300076BA0F /* database.db in Resources */,
 				670E8C702C0477650076BA0F /* Assets.xcassets in Resources */,
 				670E8C732C0477650076BA0F /* Base in Resources */,
 				670E8C6B2C0477640076BA0F /* Base in Resources */,
-				670E8CA72C04CE1E0076BA0F /* test.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +357,7 @@
 				670E8CA92C04D15D0076BA0F /* ClientController.swift in Sources */,
 				670E8CA52C04C64B0076BA0F /* Department.swift in Sources */,
 				670E8CAB2C04D1F90076BA0F /* ClinicController.swift in Sources */,
+				670E8CC02C0542C70076BA0F /* ClinicsMapViewController.swift in Sources */,
 				670E8C642C0477640076BA0F /* AppDelegate.swift in Sources */,
 				670E8CAD2C04D6120076BA0F /* AppointmentController.swift in Sources */,
 				670E8CBE2C0534FD0076BA0F /* Validator.swift in Sources */,
