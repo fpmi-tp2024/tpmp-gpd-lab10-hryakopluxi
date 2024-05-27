@@ -5,28 +5,59 @@
 //  Created by Yulia Raitsyna on 27.05.24.
 //
 
-import Foundation
 import UIKit
+
+protocol ClinicSelectionDelegate: AnyObject {
+    func clinicSelected(_ clinic: Clinic)
+}
 
 class ClinicsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var clinicNameLabel: UILabel!
+    @IBOutlet weak var clinicAddressLabel: UILabel!
+    @IBOutlet weak var clinicDescriptionTextView: UITextView!
+    @IBOutlet weak var chooseButton: UIButton!
+
     var user: Client!
     var clinics: [Clinic] = []
-    
+    weak var delegate: ClinicSelectionDelegate?
+    var selectedClinic: Clinic?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         clinics = ClinicController.shared.getAllClinics()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "clinicCell")
+        
+        // Hide clinic details initially
+        updateClinicDetails(with: nil)
+        chooseButton.isHidden = true
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDepartments", let departmentsVC = segue.destination as? DepartmentsViewController, let clinic = sender as? Clinic {
-            departmentsVC.user = user
-            departmentsVC.clinic = clinic
+    func updateClinicDetails(with clinic: Clinic?) {
+        if let clinic = clinic {
+            clinicNameLabel.text = clinic.name
+            clinicAddressLabel.text = clinic.address
+            clinicDescriptionTextView.text = clinic.description
+            clinicNameLabel.isHidden = false
+            clinicAddressLabel.isHidden = false
+            clinicDescriptionTextView.isHidden = false
+            chooseButton.isHidden = false
+            selectedClinic = clinic
+        } else {
+            clinicNameLabel.isHidden = true
+            clinicAddressLabel.isHidden = true
+            clinicDescriptionTextView.isHidden = true
+            chooseButton.isHidden = true
+            selectedClinic = nil
         }
+    }
+
+    @IBAction func chooseButtonTapped(_ sender: UIButton) {
+        guard let clinic = selectedClinic else { return }
+        delegate?.clinicSelected(clinic)
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -43,6 +74,6 @@ extension ClinicsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedClinic = clinics[indexPath.row]
-        performSegue(withIdentifier: "showDepartments", sender: selectedClinic)
+        updateClinicDetails(with: selectedClinic)
     }
 }

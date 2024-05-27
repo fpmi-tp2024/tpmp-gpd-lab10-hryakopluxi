@@ -1,16 +1,11 @@
-//
-//  LoginViewController.swift
-//  Lab10
-//
-//  Created by Yulia Raitsyna on 27.05.24.
-//
-
 import Foundation
 import UIKit
 
-class LoginRegisterViewController: UIViewController {
+class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
     
     var isAgreed = false
+    var selectedCity: String?
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
 
     // Login Form Outlets
@@ -21,11 +16,10 @@ class LoginRegisterViewController: UIViewController {
     // Registration Form Outlets
     @IBOutlet weak var agreementSwitch: UISwitch!
     @IBAction func agreementChecked(_ sender: Any) {
-        if(agreementSwitch.isOn) {
+        if agreementSwitch.isOn {
             isAgreed = true
             registerButton.isEnabled = true
-        }
-        else {
+        } else {
             isAgreed = false
             registerButton.isEnabled = false
         }
@@ -39,6 +33,7 @@ class LoginRegisterViewController: UIViewController {
     @IBOutlet weak var streetTextField: UITextField!
     @IBOutlet weak var houseNumberTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var cityPickerButton: UIButton!
 
     var clinics: [Clinic] = []
 
@@ -46,10 +41,9 @@ class LoginRegisterViewController: UIViewController {
         super.viewDidLoad()
         registerButton.isEnabled = false
         agreementSwitch.isOn = false
+        selectedCity = ""
         clinics = ClinicController.shared.getAllClinics()
-        //cityPickerMenu.delegate = self
-        //cityPickerMenu.dataSource = self
-
+        
         // Initially show login form and hide registration form
         updateView()
     }
@@ -60,27 +54,26 @@ class LoginRegisterViewController: UIViewController {
 
     func updateView() {
         let showRegister = segmentedControl.selectedSegmentIndex == 1
-
         registerView.isHidden = !showRegister
     }
 
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         guard let login = loginTextField.text, let password = passwordTextField.text else {
-                showError("Please fill in all the fields.")
-                return
-            }
+            showError("Please fill in all the fields.")
+            return
+        }
 
-            // Validate fields
-            if Validator.isEmpty(login) || Validator.isEmpty(password) {
-                showError("Login and password are required.")
-                return
-            }
+        // Validate fields
+        if Validator.isEmpty(login) || Validator.isEmpty(password) {
+            showError("Login and password are required.")
+            return
+        }
 
-            // Hash the password
-            let passHash = hashPassword(password)
+        // Hash the password
+        let passHash = hashPassword(password)
 
-        /*// Attempt to fetch user
-        if let user = ClientController.shared.getUserByLogin(login: login), user.passHash == passHash {
+        // Attempt to fetch user
+        /*if let user = ClientController.shared.getUserByLogin(login: login), user.passHash == passHash {
             // Perform segue to ClinicsViewController
             performSegue(withIdentifier: "showClinics", sender: user)
         } else {
@@ -91,47 +84,54 @@ class LoginRegisterViewController: UIViewController {
 
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         guard let login = registerLoginTextField.text,
-                  let password = registerPasswordTextField.text,
-                  let name = nameTextField.text,
-                  let street = streetTextField.text,
-                  let houseNumber = houseNumberTextField.text
-            else {
-                showError("Please fill in all the fields.")
-                return
-            }
-
-            // Validate fields
-            if Validator.isEmpty(login) || Validator.isEmpty(password) || Validator.isEmpty(name) || Validator.isEmpty(street) || Validator.isEmpty(houseNumber) {
-                showError("All fields are required.")
-                return
-            }
-
-            if !Validator.isStrongPassword(password) {
-                showError("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.")
-                return
-            }
-
-            if !Validator.containsOnlyLetters(street) {
-                showError("Street name should contain only letters.")
-                return
-            }
-
-            if !Validator.containsOnlyNumbers(houseNumber) {
-                showError("House number should contain only numbers.")
-                return
-            }
-
-        if(!isAgreed) {
-            showError("Firstly agree to terms.")
+              let password = registerPasswordTextField.text,
+              let name = nameTextField.text,
+              let street = streetTextField.text,
+              let houseNumber = houseNumberTextField.text
+        else {
+            showError("Please fill in all the fields.")
             return
         }
 
-                // Find the clinic ID for the selected city
-                
+        // Validate fields
+        if Validator.isEmpty(login) || Validator.isEmpty(password) || Validator.isEmpty(name) || Validator.isEmpty(street) || Validator.isEmpty(houseNumber) {
+            showError("All fields are required.")
+            return
+        }
 
-                
+        if !Validator.isStrongPassword(password) {
+            showError("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.")
+            return
+        }
 
-            let passHash = hashPassword(password)
+        if !Validator.containsOnlyLetters(street) {
+            showError("Street name should contain only letters.")
+            return
+        }
+
+        if !Validator.containsOnlyNumbers(houseNumber) {
+            showError("House number should contain only numbers.")
+            return
+        }
+
+        if !isAgreed {
+            showError("Firstly agree to terms.")
+            return
+        }
+        
+        guard let selectedCity = selectedCity else {
+            showError("Please choose a city.")
+            return
+        }
+
+        // Find the clinic ID for the selected city
+        /*let selectedClinic = clinics.first(where: { $0.name == selectedCity })
+        guard let selectedClinicId = selectedClinic?.id else {
+            showError("Invalid selected city.")
+            return
+        }*/
+
+        let passHash = hashPassword(password)
         /*if let user = ClientController.shared.registerUser(
             login: login,
             passHash: passHash,
@@ -158,22 +158,15 @@ class LoginRegisterViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showClinics", let clinicsVC = segue.destination as? ClinicsViewController, let user = sender as? Client {
-            clinicsVC.user = user
+        if segue.identifier == "showClinics", let clinicsVC = segue.destination as? ClinicsViewController {
+            clinicsVC.user = sender as? Client
+            clinicsVC.delegate = self
         }
     }
+
+    // ClinicSelectionDelegate method
+    func clinicSelected(_ clinic: Clinic) {
+        selectedCity = clinic.name
+        cityPickerButton.setTitle(clinic.name, for: .normal)
+    }
 }
-
-/*extension LoginRegisterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return clinics.count
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return clinics[row].name
-    }
-}*/

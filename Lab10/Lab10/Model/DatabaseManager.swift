@@ -161,9 +161,10 @@ class DatabaseManager {
                         id: Int(sqlite3_column_int(stmt, 0)),
                         name: String(cString: sqlite3_column_text(stmt, 1)),
                         address: String(cString: sqlite3_column_text(stmt, 2)),
-                        addressCoords: String(cString: sqlite3_column_text(stmt, 3)),
-                        isPediatric: sqlite3_column_int(stmt, 4) != 0,
-                        isHospital: sqlite3_column_int(stmt, 5) != 0
+                        description: String(cString: sqlite3_column_text(stmt, 3)),
+                        addressCoords: String(cString: sqlite3_column_text(stmt, 4)),
+                        isPediatric: sqlite3_column_int(stmt, 5) != 0,
+                        isHospital: sqlite3_column_int(stmt, 6) != 0
                     )
                     result.append(clinic)
                 }
@@ -187,9 +188,10 @@ class DatabaseManager {
                         id: Int(sqlite3_column_int(stmt, 0)),
                         name: String(cString: sqlite3_column_text(stmt, 1)),
                         address: String(cString: sqlite3_column_text(stmt, 2)),
-                        addressCoords: String(cString: sqlite3_column_text(stmt, 3)),
-                        isPediatric: sqlite3_column_int(stmt, 4) != 0,
-                        isHospital: sqlite3_column_int(stmt, 5) != 0
+                        description: String(cString: sqlite3_column_text(stmt, 3)),
+                        addressCoords: String(cString: sqlite3_column_text(stmt, 4)),
+                        isPediatric: sqlite3_column_int(stmt, 5) != 0,
+                        isHospital: sqlite3_column_int(stmt, 6) != 0
                     )
                     sqlite3_finalize(stmt)
                     return clinic

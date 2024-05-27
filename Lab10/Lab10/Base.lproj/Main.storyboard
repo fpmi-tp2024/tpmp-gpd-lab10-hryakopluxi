@@ -139,6 +139,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Choose hospital"/>
+                                        <connections>
+                                            <segue destination="OdR-1Y-otq" kind="show" id="viN-fb-5TT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -173,7 +176,7 @@
             <objects>
                 <viewController id="OdR-1Y-otq" customClass="ClinicsViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ZB-op-QkZ" customClass="ClinicsView">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose your hospital" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQh-Jd-LVB">
@@ -263,6 +266,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qlt-li-Trh"/>
                     <connections>
+                        <outlet property="chooseButton" destination="ehp-sO-NwJ" id="jBX-cd-cNr"/>
+                        <outlet property="clinicAddressLabel" destination="iri-SF-l17" id="uPi-7c-pNP"/>
+                        <outlet property="clinicDescriptionTextView" destination="Grq-5m-cUO" id="TtU-5c-Lwz"/>
+                        <outlet property="clinicNameLabel" destination="j6K-7K-zLJ" id="buq-wL-eOU"/>
                         <outlet property="tableView" destination="ijU-Wc-rDZ" id="MwV-X9-z7E"/>
                     </connections>
                 </viewController>
