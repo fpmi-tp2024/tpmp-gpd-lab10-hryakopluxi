@@ -30,3 +30,4 @@ class ClinicController {
         return database.getClinicById(clinicId)
     }
 }
+

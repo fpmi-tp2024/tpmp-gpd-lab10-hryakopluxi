@@ -27,7 +27,7 @@ class DatabaseManager {
         """
         
         let createClinicsTableQuery = """
-        CREATE TABLE IF NOT EXISTS clinics (
+        CREATE TABLE IF NOT EXISTS clinic (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT UNIQUE NOT NULL,
             address TEXT NOT NULL,
@@ -129,7 +129,7 @@ class DatabaseManager {
     }
         // CRUD operations for clinics
         func addClinic(_ clinic: Clinic) {
-            let insertQuery = "INSERT INTO clinics (name, address, address_cords, is_pediatric, is_hospital) VALUES (?, ?, ?, ?, ?);"
+            let insertQuery = "INSERT INTO clinic (name, address, address_cords, is_pediatric, is_hospital) VALUES (?, ?, ?, ?, ?);"
             
             var stmt: OpaquePointer?
             
@@ -151,7 +151,7 @@ class DatabaseManager {
         }
         
         func getAllClinics() -> [Clinic] {
-            let query = "SELECT * FROM clinics;"
+            let query = "SELECT * FROM clinic;"
             var stmt: OpaquePointer?
             var result = [Clinic]()
             
@@ -176,7 +176,7 @@ class DatabaseManager {
         }
         
         func getClinicById(_ clinicId: Int) -> Clinic? {
-            let query = "SELECT * FROM clinics WHERE id = ?;"
+            let query = "SELECT * FROM clinic WHERE id = ?;"
             var stmt: OpaquePointer?
             
             if sqlite3_prepare_v2(db, query, -1, &stmt, nil) == SQLITE_OK {

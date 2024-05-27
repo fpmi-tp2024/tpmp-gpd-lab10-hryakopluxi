@@ -26,3 +26,4 @@ class DepartmentController {
         return database.getDepartmentsByClinicId(clinicId)
     }
 }
+

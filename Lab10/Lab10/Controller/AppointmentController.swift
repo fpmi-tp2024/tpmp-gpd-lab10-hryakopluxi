@@ -37,4 +37,3 @@ class AppointmentController {
         return database.getAppointmentById(appointmentId)
     }
 }
-
