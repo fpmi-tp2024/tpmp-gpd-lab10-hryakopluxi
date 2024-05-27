@@ -17,6 +17,13 @@
 		670E8C7E2C0477650076BA0F /* Lab10Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8C7D2C0477650076BA0F /* Lab10Tests.swift */; };
 		670E8C882C0477650076BA0F /* Lab10UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8C872C0477650076BA0F /* Lab10UITests.swift */; };
 		670E8C8A2C0477650076BA0F /* Lab10UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8C892C0477650076BA0F /* Lab10UITestsLaunchTests.swift */; };
+		670E8C9A2C04C00E0076BA0F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8C992C04C00E0076BA0F /* DatabaseManager.swift */; };
+		670E8C9D2C04C1240076BA0F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 670E8C9C2C04C1240076BA0F /* libsqlite3.tbd */; };
+		670E8C9F2C04C35B0076BA0F /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8C9E2C04C35B0076BA0F /* Client.swift */; };
+		670E8CA12C04C5F20076BA0F /* Clinic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CA02C04C5F20076BA0F /* Clinic.swift */; };
+		670E8CA32C04C61C0076BA0F /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CA22C04C61C0076BA0F /* Appointment.swift */; };
+		670E8CA52C04C64B0076BA0F /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CA42C04C64B0076BA0F /* Department.swift */; };
+		670E8CA72C04CE1E0076BA0F /* test.db in Resources */ = {isa = PBXBuildFile; fileRef = 670E8CA62C04CE1E0076BA0F /* test.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +58,13 @@
 		670E8C832C0477650076BA0F /* Lab10UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Lab10UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		670E8C872C0477650076BA0F /* Lab10UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab10UITests.swift; sourceTree = "<group>"; };
 		670E8C892C0477650076BA0F /* Lab10UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab10UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		670E8C992C04C00E0076BA0F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		670E8C9C2C04C1240076BA0F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		670E8C9E2C04C35B0076BA0F /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		670E8CA02C04C5F20076BA0F /* Clinic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clinic.swift; sourceTree = "<group>"; };
+		670E8CA22C04C61C0076BA0F /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
+		670E8CA42C04C64B0076BA0F /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
+		670E8CA62C04CE1E0076BA0F /* test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				670E8C9D2C04C1240076BA0F /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +100,7 @@
 				670E8C7C2C0477650076BA0F /* Lab10Tests */,
 				670E8C862C0477650076BA0F /* Lab10UITests */,
 				670E8C612C0477640076BA0F /* Products */,
+				670E8C9B2C04C1240076BA0F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,11 +117,15 @@
 		670E8C622C0477640076BA0F /* Lab10 */ = {
 			isa = PBXGroup;
 			children = (
+				670E8C982C04A2930076BA0F /* Controller */,
+				670E8C972C04A28C0076BA0F /* View */,
+				670E8C962C04A2810076BA0F /* Model */,
 				670E8C632C0477640076BA0F /* AppDelegate.swift */,
 				670E8C652C0477640076BA0F /* SceneDelegate.swift */,
 				670E8C672C0477640076BA0F /* ViewController.swift */,
 				670E8C692C0477640076BA0F /* Main.storyboard */,
 				670E8C6F2C0477650076BA0F /* Assets.xcassets */,
+				670E8CA62C04CE1E0076BA0F /* test.db */,
 				670E8C712C0477650076BA0F /* LaunchScreen.storyboard */,
 				670E8C742C0477650076BA0F /* Info.plist */,
 				670E8C6C2C0477640076BA0F /* Lab10.xcdatamodeld */,
@@ -128,6 +148,40 @@
 				670E8C892C0477650076BA0F /* Lab10UITestsLaunchTests.swift */,
 			);
 			path = Lab10UITests;
+			sourceTree = "<group>";
+		};
+		670E8C962C04A2810076BA0F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				670E8C992C04C00E0076BA0F /* DatabaseManager.swift */,
+				670E8C9E2C04C35B0076BA0F /* Client.swift */,
+				670E8CA02C04C5F20076BA0F /* Clinic.swift */,
+				670E8CA22C04C61C0076BA0F /* Appointment.swift */,
+				670E8CA42C04C64B0076BA0F /* Department.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		670E8C972C04A28C0076BA0F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		670E8C982C04A2930076BA0F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		670E8C9B2C04C1240076BA0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				670E8C9C2C04C1240076BA0F /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +247,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
@@ -237,6 +294,7 @@
 				670E8C702C0477650076BA0F /* Assets.xcassets in Resources */,
 				670E8C732C0477650076BA0F /* Base in Resources */,
 				670E8C6B2C0477640076BA0F /* Base in Resources */,
+				670E8CA72C04CE1E0076BA0F /* test.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,7 +320,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				670E8C682C0477640076BA0F /* ViewController.swift in Sources */,
+				670E8CA12C04C5F20076BA0F /* Clinic.swift in Sources */,
+				670E8CA52C04C64B0076BA0F /* Department.swift in Sources */,
 				670E8C642C0477640076BA0F /* AppDelegate.swift in Sources */,
+				670E8CA32C04C61C0076BA0F /* Appointment.swift in Sources */,
+				670E8C9F2C04C35B0076BA0F /* Client.swift in Sources */,
+				670E8C9A2C04C00E0076BA0F /* DatabaseManager.swift in Sources */,
 				670E8C6E2C0477640076BA0F /* Lab10.xcdatamodeld in Sources */,
 				670E8C662C0477640076BA0F /* SceneDelegate.swift in Sources */,
 			);

@@ -10,12 +10,21 @@ import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    let dbManager = DatabaseManager.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        initializeDatabase()
         // Override point for customization after application launch.
         return true
+    }
+    
+    func initializeDatabase() {
+        guard let databasePath = Bundle.main.path(forResource: "test", ofType: "db") else {
+            fatalError("Db file not found")
+        }
+        
+        dbManager.openDatabase(path: databasePath)
     }
 
     // MARK: UISceneSession Lifecycle
