@@ -1,6 +1,10 @@
 import Foundation
 import UIKit
 
+protocol ClientLoginDelegate: AnyObject {
+    
+}
+
 class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
     
     var isAgreed = false
@@ -75,6 +79,7 @@ class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
         // Attempt to fetch user
         if let user = ClientController.shared.getUserByLogin(login: login), user.passHash == passHash {
             // Perform segue to ClientInfoViewController
+            ClientSession.shared.currentUser = user
             performSegue(withIdentifier: "showInfo", sender: user)
         } else {
             // Show error message
@@ -140,6 +145,7 @@ class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
             address: "\(street), \(houseNumber)",
             addressCoords: addressToCoords(address: "\(street), \(houseNumber)")) {
             // Perform segue to ClientInfoViewController
+            ClientSession.shared.currentUser = user
             performSegue(withIdentifier: "showInfo", sender: user)
         } else {
             showError("Registration failed")

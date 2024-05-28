@@ -26,7 +26,7 @@ class DatabaseManager {
     
     // CRUD operations for users
     func addUser(_ user: Client) {
-        let insertQuery = "INSERT INTO users (login, pass_hash, clinic_id, name, birthdate, address, address_cords) VALUES (?, ?, ?, ?, ?, ?, ?);"
+        let insertQuery = "INSERT INTO client (login, pass_hash, clinic_id, name, address, address_cords) VALUES (?, ?, ?, ?, ?, ?);"
         
         var stmt: OpaquePointer?
         
@@ -35,9 +35,8 @@ class DatabaseManager {
             sqlite3_bind_text(stmt, 2, (user.passHash as NSString).utf8String, -1, nil)
             sqlite3_bind_int(stmt, 3, Int32(user.clinicId))
             sqlite3_bind_text(stmt, 4, (user.name as NSString).utf8String, -1, nil)
-            
-            sqlite3_bind_text(stmt, 6, (user.address as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(stmt, 7, (user.addressCoords as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(stmt, 5, (user.address as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(stmt, 6, (user.addressCoords as NSString).utf8String, -1, nil)
             
             if sqlite3_step(stmt) != SQLITE_DONE {
                 print("Insert failed: \(String(cString: sqlite3_errmsg(db)))")
@@ -183,7 +182,7 @@ class DatabaseManager {
     
     // CRUD operations for departments
     func addDepartment(_ department: Department) {
-        let insertQuery = "INSERT INTO departments (clinic_id, specialization) VALUES (?, ?);"
+        let insertQuery = "INSERT INTO department (clinic_id, specialization) VALUES (?, ?);"
         
         var stmt: OpaquePointer?
         
@@ -202,7 +201,7 @@ class DatabaseManager {
     }
     
     func getDepartmentsByClinicId(_ clinicId: Int) -> [Department] {
-        let query = "SELECT * FROM departments WHERE clinic_id = ?;"
+        let query = "SELECT * FROM department WHERE clinic_id = ?;"
         var stmt: OpaquePointer?
         var result = [Department]()
         
@@ -227,7 +226,7 @@ class DatabaseManager {
     
     // CRUD operations for appointments
     func addAppointment(_ appointment: Appointment) -> Bool {
-        let insertQuery = "INSERT INTO appointments (user_id, clinic_id, department_id, doctor_name, date) VALUES (?, ?, ?, ?, ?);"
+        let insertQuery = "INSERT INTO appointment (client_id, clinic_id, department_id, doctor_name, date) VALUES (?, ?, ?, ?, ?);"
         
         var stmt: OpaquePointer?
         
@@ -243,16 +242,15 @@ class DatabaseManager {
                 return false
             }
             return true
-        } else {
-            print("Error preparing insert: \(String(cString: sqlite3_errmsg(db)))")
-            return false
         }
         
+        print("Error preparing insert: \(String(cString: sqlite3_errmsg(db)))")
         sqlite3_finalize(stmt)
+        return false
     }
     
     func deleteAppointment(_ appointmentId: Int) -> Bool {
-        let deleteQuery = "DELETE FROM appointments WHERE id = ?;"
+        let deleteQuery = "DELETE FROM appointment WHERE id = ?;"
         
         var stmt: OpaquePointer?
         
@@ -264,16 +262,16 @@ class DatabaseManager {
                 return false
             }
             return true
-        } else {
-            print("Error preparing delete: \(String(cString: sqlite3_errmsg(db)))")
-            return false
         }
         
+        print("Error preparing delete: \(String(cString: sqlite3_errmsg(db)))")
         sqlite3_finalize(stmt)
+        return false
+        
     }
     
     func updateAppointmentDate(_ appointmentId: Int, newDate: Date) -> Bool {
-        let updateQuery = "UPDATE appointments SET date = ? WHERE id = ?;"
+        let updateQuery = "UPDATE appointment SET date = ? WHERE id = ?;"
         
         var stmt: OpaquePointer?
         
@@ -295,7 +293,7 @@ class DatabaseManager {
     }
     
     func getAppointmentsByUserId(_ userId: Int) -> [Appointment] {
-        let query = "SELECT * FROM appointments WHERE user_id = ?;"
+        let query = "SELECT * FROM appointment WHERE client_id = ?;"
         var stmt: OpaquePointer?
         var result = [Appointment]()
         
@@ -322,7 +320,7 @@ class DatabaseManager {
     }
     
     func getAppointmentById(_ appointmentId: Int) -> Appointment? {
-        let query = "SELECT * FROM appointments WHERE id = ?;"
+        let query = "SELECT * FROM appointment WHERE id = ?;"
         var stmt: OpaquePointer?
         
         if sqlite3_prepare_v2(db, query, -1, &stmt, nil) == SQLITE_OK {
@@ -389,13 +387,13 @@ class DatabaseManager {
                     specialization: String(cString: sqlite3_column_text(stmt, 2))
                 )
                 sqlite3_finalize(stmt)
+                print(department)
                 return department
             }
-        } else {
-            print("Error preparing select: \(String(cString: sqlite3_errmsg(db)))")
         }
-        
+        print("Error preparing select: \(String(cString: sqlite3_errmsg(db)))")
         sqlite3_finalize(stmt)
+    
         return nil
     }
 }

@@ -31,8 +31,13 @@ class ClientInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        departments = DepartmentController.shared.getDepartmentsByClinicId(clinicId: clinic.id)
-        appointments = AppointmentController.shared.getAppointmentsByClientId(clientId: user.id) // Fetch appointments
+        
+        // Register the custom table view cell
+        tableView.register(AppointmentTableViewCell.self, forCellReuseIdentifier: "appointmentCell")
+        
+        appointments = AppointmentController.shared.getAppointmentsByClientId(clientId: ClientSession.shared.currentUser.id)
+        print(ClientSession.shared.currentUser)
+        print(appointments)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -41,15 +46,11 @@ class ClientInfoViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*if segue.identifier == "showAppointments", let appointmentsVC = segue.destination as? AppointmentsViewController, let department = sender as? Department {
-         appointmentsVC.user = user
-         appointmentsVC.clinic = clinic
-         appointmentsVC.department = department
-         } else if segue.identifier == "editAppointment", let editVC = segue.destination as? EditAppointmentViewController, let appointment = sender as? Appointment {
-         editVC.appointment = appointment
-         } else if segue.identifier == "changeClinic", let clinicsVC = segue.destination as? ClinicsViewController {
-         clinicsVC.delegate = self
-         }*/
+        if segue.identifier == "showAppointments", let appointmentsVC = segue.destination as? CreateAppointmentViewController, let department = sender as? Department {
+            
+        } else if segue.identifier == "changeClinic", let clinicsVC = segue.destination as? ClinicsViewController {
+            clinicsVC.delegate = self
+        }
     }
     
     @IBAction func changeClinic(_ sender: Any) {
@@ -61,7 +62,8 @@ class ClientInfoViewController: UIViewController {
     }
     
     func displayAppointmentDetails(_ appointment: Appointment) {
-        clinicTitleLabel.text = clinic.name
+        let clinic = ClinicController.shared.getClinicById(clinicId: ClientSession.shared.currentUser.clinicId)
+        clinicTitleLabel.text = clinic?.name
         
         let department = DepartmentController.shared.getDepartmentById(id: appointment.departmentId)
         
@@ -78,7 +80,6 @@ class ClientInfoViewController: UIViewController {
         }
         infoView.isHidden = false
     }
-    
 }
 
 extension ClientInfoViewController: UITableViewDelegate, UITableViewDataSource {
@@ -89,9 +90,8 @@ extension ClientInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "appointmentCell", for: indexPath) as! AppointmentTableViewCell
         let appointment = appointments[indexPath.row]
-        cell.configure(with: appointment)
-        cell.editButton.addTarget(self, action: #selector(editButtonTapped(_:)), for: .touchUpInside)
-        cell.editButton.tag = indexPath.row
+        let department = DepartmentController.shared.getDepartmentById(id: appointment.departmentId)
+        cell.textLabel?.text = department?.specialization
         return cell
     }
     
@@ -106,33 +106,27 @@ extension ClientInfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// Assuming you have a protocol to handle clinic selection
 extension ClientInfoViewController: ClinicSelectionDelegate {
     func clinicSelected(_ clinic: Clinic) {
-        
+        didSelectClinic(clinic)
     }
     
     func didSelectClinic(_ clinic: Clinic) {
         self.clinic = clinic
         self.clinicLabel.text = clinic.name
-        // Refresh departments and appointments based on the new clinic
         departments = DepartmentController.shared.getDepartmentsByClinicId(clinicId: clinic.id)
-        appointments = AppointmentController.shared.getAppointmentsByClientId(clientId: user.id) // Fetch new appointments
+        appointments = AppointmentController.shared.getAppointmentsByClientId(clientId: user.id)
         tableView.reloadData()
-        infoView.isHidden = true // Hide infoView as clinic changed
+        infoView.isHidden = true
     }
 }
 
-// Custom table view cell
 class AppointmentTableViewCell: UITableViewCell {
-    @IBOutlet weak var departmentLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var appointmentLabel: UILabel!
     
-    func configure(with appointment: Appointment) {
-        let department = DepartmentController.shared.getDepartmentById(id: appointment.departmentId)
+    @IBAction func editAppointment(_ sender: Any) {
         
-        departmentLabel.text = department?.specialization
-        dateLabel.text = appointment.date
     }
+    
+    
 }

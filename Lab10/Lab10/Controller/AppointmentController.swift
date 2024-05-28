@@ -49,7 +49,7 @@ class AppointmentController {
     }
     
     func getAppointmentsByClientId(clientId: Int) -> [Appointment] {
-        return appointments.filter { $0.clientId == clientId }
+        return database.getAppointmentsByUserId(clientId)
     }
 }
 
