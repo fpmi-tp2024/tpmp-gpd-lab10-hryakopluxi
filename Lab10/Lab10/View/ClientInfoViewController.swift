@@ -36,8 +36,12 @@ class ClientInfoViewController: UIViewController {
         tableView.register(AppointmentTableViewCell.self, forCellReuseIdentifier: "appointmentCell")
         
         appointments = AppointmentController.shared.getAppointmentsByClientId(clientId: ClientSession.shared.currentUser.id)
-        print(ClientSession.shared.currentUser)
-        print(appointments)
+        
+        fullNameLabel.text = ClientSession.shared.currentUser.name
+        addressLabel.text = ClientSession.shared.currentUser.address
+        
+        clinicLabel.text = ClinicController.shared.getClinicById(clinicId: ClientSession.shared.currentUser.clinicId)?.name
+        
         
         tableView.delegate = self
         tableView.dataSource = self

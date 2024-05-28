@@ -31,16 +31,20 @@ class AppointmentController {
     }
     
     func rescheduleAppointment(appointmentId: Int, newDateString: String) -> Bool {
-        return database.rescheduleAppointment(appointmentId: appointmentId, newDateString: newDateString)
-    }
-    
-    
-    func getAppointmentsForUser(clientId: Int) -> [Appointment] {
-        return appointments.filter { $0.clientId == clientId }
+        
+        let index = appointments.firstIndex(where: { $0.id == appointmentId })
+        
+        if index != nil && database.rescheduleAppointment(appointmentId: appointmentId, newDateString: newDateString){
+            appointments[index!].date = newDateString
+            return true
+        }
+        
+        print("Invalid appointment")
+        return false
     }
     
     func getAppointmentById(appointmentId: Int) -> Appointment? {
-        return appointments.first(where: { $0.id == appointmentId })
+        return database.getAppointmentById(appointmentId)
     }
     
     func addAppointment(_ appointment: Appointment) -> Bool {

@@ -170,7 +170,6 @@ class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showInfo", let clientInfoVC = segue.destination as? ClientInfoViewController {
             clientInfoVC.user = sender as? Client
-            //clientInfoVC.delegate = self
         }
     }
     
