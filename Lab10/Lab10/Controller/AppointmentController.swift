@@ -1,9 +1,7 @@
+// AppointmentController.swift
+// Lab10
 //
-//  ApplicationController.swift
-//  Lab10
-//
-//  Created by Yulia Raitsyna on 27.05.24.
-//
+// Created by Yulia Raitsyna on 27.05.24.
 
 import Foundation
 
@@ -12,28 +10,53 @@ class AppointmentController {
     // MARK: - Properties
     static let shared = AppointmentController()
     private let database = DatabaseManager.shared
+    private var appointments: [Appointment] = []
     
     // MARK: - Public Methods
     
-    func createAppointment(userId: Int, clinicId: Int, departmentId: Int, doctorName: String, date: Date) -> Bool {
+    func createAppointment(clientId: Int, clinicId: Int, departmentId: Int, doctorName: String, date: Date, address: String) -> Bool {
         let appointmentId = UUID().hashValue
-        let appointment = Appointment(id: appointmentId, userId: userId, clinicId: clinicId, departmentId: departmentId, doctorName: doctorName, date: date)
+        let dateString = date.toDateTimeString()
+        let appointment = Appointment(id: appointmentId, clientId: clientId, clinicId: clinicId, departmentId: departmentId, doctorName: doctorName, date: dateString)
+        appointments.append(appointment)
         return database.addAppointment(appointment)
     }
     
     func cancelAppointment(appointmentId: Int) -> Bool {
-        return database.deleteAppointment(appointmentId)
+        if let index = appointments.firstIndex(where: { $0.id == appointmentId }) {
+            appointments.remove(at: index)
+            return database.deleteAppointment(appointmentId)
+        }
+        return false
     }
     
-    func rescheduleAppointment(appointmentId: Int, newDate: Date) -> Bool {
-        return database.updateAppointmentDate(appointmentId, newDate: newDate)
+    func rescheduleAppointment(appointmentId: Int, newDateString: String) -> Bool {
+        return database.rescheduleAppointment(appointmentId: appointmentId, newDateString: newDateString)
     }
     
-    func getAppointmentsForUser(userId: Int) -> [Appointment] {
-        return database.getAppointmentsByUserId(userId)
+    
+    func getAppointmentsForUser(clientId: Int) -> [Appointment] {
+        return appointments.filter { $0.clientId == clientId }
     }
     
     func getAppointmentById(appointmentId: Int) -> Appointment? {
-        return database.getAppointmentById(appointmentId)
+        return appointments.first(where: { $0.id == appointmentId })
+    }
+    
+    func addAppointment(_ appointment: Appointment) -> Bool {
+        appointments.append(appointment)
+        return database.addAppointment(appointment)
+    }
+    
+    func getAppointmentsByClientId(clientId: Int) -> [Appointment] {
+        return appointments.filter { $0.clientId == clientId }
+    }
+}
+
+extension Date {
+    func toDateTimeString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        return formatter.string(from: self)
     }
 }

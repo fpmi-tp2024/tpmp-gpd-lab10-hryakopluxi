@@ -25,5 +25,9 @@ class DepartmentController {
     func getDepartmentsByClinicId(clinicId: Int) -> [Department] {
         return database.getDepartmentsByClinicId(clinicId)
     }
+    
+    func getDepartmentById(id: Int) -> Department? {
+        return database.getDepartmentById(id: id)
+    }
 }
 

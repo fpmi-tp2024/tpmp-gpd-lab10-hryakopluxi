@@ -8,10 +8,10 @@
 import Foundation
 
 struct Appointment: Codable {
-    var id: Int
-    var userId: Int
-    var clinicId: Int
-    var departmentId: Int
-    var doctorName: String
-    var date: Date
+    let id: Int
+    let clientId: Int
+    let clinicId: Int
+    let departmentId: Int
+    let doctorName: String
+    var date: String
 }

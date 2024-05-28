@@ -17,12 +17,12 @@ class ClinicsViewController: UIViewController {
     @IBOutlet weak var clinicAddressLabel: UILabel!
     @IBOutlet weak var clinicDescriptionTextView: UITextView!
     @IBOutlet weak var chooseButton: UIButton!
-
+    
     var user: Client!
     var clinics: [Clinic] = []
     weak var delegate: ClinicSelectionDelegate?
     var selectedClinic: Clinic?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         clinics = ClinicController.shared.getAllClinics()
@@ -53,7 +53,7 @@ class ClinicsViewController: UIViewController {
             selectedClinic = nil
         }
     }
-
+    
     @IBAction func chooseButtonTapped(_ sender: UIButton) {
         guard let clinic = selectedClinic else { return }
         delegate?.clinicSelected(clinic)

@@ -15,15 +15,19 @@ class ClientController {
     
     // MARK: - Public Methods
     
-    func registerUser(login: String, passHash: String, clinicId: Int, name: String, birthdate: Date, address: String, addressCoords: String) -> Client? {
+    func registerUser(login: String, passHash: String, clinicId: Int, name: String, address: String, addressCoords: String) -> Client? {
         let userId = UUID().hashValue
-        let user = Client(id: userId, login: login, passHash: passHash, clinicId: clinicId, name: name, birthdate: birthdate, address: address, addressCoords: addressCoords)
+        let user = Client(id: userId, login: login, passHash: passHash, clinicId: clinicId, name: name, address: address, addressCoords: addressCoords)
         database.addUser(user)
         return user
     }
     
     func getUserById(userId: Int) -> Client? {
         return database.getUserById(userId)
+    }
+    
+    func getUserByLogin(login: String) -> Client? {
+        return database.getUserByLogin(login)
     }
 }
 

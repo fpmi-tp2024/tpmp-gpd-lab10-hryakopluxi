@@ -13,7 +13,6 @@ struct Client: Codable {
     var passHash: String
     var clinicId: Int
     var name: String
-    var birthdate: Date
     var address: String
     var addressCoords: String
 }
