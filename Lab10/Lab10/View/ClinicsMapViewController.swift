@@ -15,7 +15,7 @@ class ClinicsMapViewController: UIViewController, MKMapViewDelegate, CLLocationM
     @IBOutlet weak var clinicNameLabel: UILabel!
     @IBOutlet weak var clinicAddressLabel: UILabel!
     @IBOutlet weak var clinicDescriptionTextView: UITextView!
-    //@IBOutlet weak var chooseButton: UIButton!
+    @IBOutlet weak var chooseButton: UIButton!
     
     var clinics: [Clinic] = []
     var locationManager: CLLocationManager!
@@ -27,7 +27,7 @@ class ClinicsMapViewController: UIViewController, MKMapViewDelegate, CLLocationM
         clinics = ClinicController.shared.getAllClinics()
         showClinicsOnMap()
         updateClinicDetails(with: nil)
-        //chooseButton.isHidden = true
+        chooseButton.isHidden = true
     }
     
     func setupLocationManager() {
@@ -99,12 +99,12 @@ class ClinicsMapViewController: UIViewController, MKMapViewDelegate, CLLocationM
                 self.clinicNameLabel.isHidden = false
                 self.clinicAddressLabel.isHidden = false
                 self.clinicDescriptionTextView.isHidden = false
-                //self.chooseButton.isHidden = false
+                self.chooseButton.isHidden = false
             } else {
                 self.clinicNameLabel.isHidden = true
                 self.clinicAddressLabel.isHidden = true
                 self.clinicDescriptionTextView.isHidden = true
-                //self.chooseButton.isHidden = true
+                self.chooseButton.isHidden = true
             }
         }
     }

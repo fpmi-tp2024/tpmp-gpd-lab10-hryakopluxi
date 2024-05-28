@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Ko-PK-eFb">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
@@ -133,7 +133,8 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Choose hospital"/>
                                         <connections>
-                                            <segue destination="OdR-1Y-otq" kind="show" id="viN-fb-5TT"/>
+                                            <action selector="selectClinicTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vsy-cH-pfg"/>
+                                            <segue destination="OdR-1Y-otq" kind="show" identifier="showClinics" id="cKI-5o-qHY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -143,8 +144,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Co3-w3-SyR"/>
                     <connections>
                         <outlet property="agreementSwitch" destination="z9D-pV-5RR" id="4fN-6L-2wS"/>
+                        <outlet property="cityTextField" destination="4bM-YZ-wiH" id="l1K-Yh-9hz"/>
                         <outlet property="houseNumberTextField" destination="fIM-hj-CpQ" id="uhV-sy-rQw"/>
                         <outlet property="loginButton" destination="ODz-Ej-BLY" id="cxd-LK-hKL"/>
                         <outlet property="loginTextField" destination="K93-XD-JPe" id="UnH-Eu-PIy"/>
@@ -162,14 +165,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1043.5114503816794" y="-673.23943661971839"/>
+            <point key="canvasLocation" x="-116.79389312977099" y="-673.23943661971839"/>
         </scene>
         <!--Clinics View Controller-->
         <scene sceneID="YS8-zC-z3h">
             <objects>
-                <viewController storyboardIdentifier="chooseClinic" id="OdR-1Y-otq" customClass="ClinicsViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showClinics" id="OdR-1Y-otq" customClass="ClinicsViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ZB-op-QkZ" customClass="ClinicsView">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose your hospital" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQh-Jd-LVB">
@@ -212,12 +215,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGJ-kd-5ba">
-                                <rect key="frame" x="16" y="69" width="62" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eu3-Cg-doG">
                                 <rect key="frame" x="26" y="624" width="340" height="159"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -241,6 +238,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Choose"/>
+                                        <connections>
+                                            <action selector="chooseButtonTapped:" destination="OdR-1Y-otq" eventType="touchUpInside" id="GIc-vP-gEY"/>
+                                        </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Grq-5m-cUO">
                                         <rect key="frame" x="0.0" y="83" width="340" height="68"/>
@@ -268,14 +268,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y4v-hL-Gvy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-190.07633587786259" y="-673.23943661971839"/>
+            <point key="canvasLocation" x="736.64122137404581" y="-673.23943661971839"/>
         </scene>
         <!--Clinics Map View Controller-->
         <scene sceneID="chB-tH-HV0">
             <objects>
                 <viewController id="bs4-0O-5q4" customClass="ClinicsMapViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lEo-GH-cbU">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qk3-0u-vuH">
@@ -283,12 +283,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxf-Nv-DzO">
-                                <rect key="frame" x="16" y="68" width="62" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kiM-PI-gz2">
                                 <rect key="frame" x="26" y="622" width="340" height="159"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -330,6 +324,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9FR-SW-EpV"/>
                     <connections>
+                        <outlet property="chooseButton" destination="PGn-wR-bCL" id="GM3-Rh-Bsc"/>
                         <outlet property="clinicAddressLabel" destination="Q9D-ZA-Upm" id="j1E-nn-hm4"/>
                         <outlet property="clinicDescriptionTextView" destination="KIc-j2-1E1" id="1a6-YQ-piD"/>
                         <outlet property="clinicNameLabel" destination="lbp-0Y-Bkt" id="32K-Gk-Kbs"/>
@@ -338,14 +333,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2oj-2u-mp7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="638.93129770992368" y="-673.23943661971839"/>
+            <point key="canvasLocation" x="1565.6488549618321" y="-673.23943661971839"/>
         </scene>
         <!--Client Info View Controller-->
         <scene sceneID="QU0-g7-vUz">
             <objects>
                 <viewController storyboardIdentifier="showInfo" id="eWa-Zi-DFu" customClass="ClientInfoViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MZK-Un-rut">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Mmw-Cz-FdH">
@@ -475,7 +470,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Change clinic"/>
                                 <connections>
                                     <action selector="changeClinic:" destination="eWa-Zi-DFu" eventType="touchUpInside" id="VVo-g7-Eza"/>
-                                    <segue destination="OdR-1Y-otq" kind="show" id="bZe-hu-1oX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -508,7 +502,7 @@
             <objects>
                 <viewController storyboardIdentifier="newAppointment" id="3jD-Do-Lpz" customClass="AppointmentViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i69-ip-4Ar">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LYz-dI-TUb">
@@ -562,7 +556,7 @@
             <objects>
                 <viewController storyboardIdentifier="editAppointment" id="hNb-Zc-EWb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4K7-j6-hCp">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J6X-Mu-3FG">
@@ -606,10 +600,27 @@
             </objects>
             <point key="canvasLocation" x="-190" y="674"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nom-w8-gSS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Ko-PK-eFb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gjY-fZ-tMX">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="1Kd-zg-VO0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lhZ-xz-XMu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1043.5114503816794" y="-673.23943661971839"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Xfg-GR-gfl"/>
-        <segue reference="viN-fb-5TT"/>
+        <segue reference="QOK-Et-azT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">

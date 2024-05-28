@@ -18,7 +18,6 @@ class ClinicsViewController: UIViewController {
     @IBOutlet weak var clinicDescriptionTextView: UITextView!
     @IBOutlet weak var chooseButton: UIButton!
     
-    var user: Client!
     var clinics: [Clinic] = []
     weak var delegate: ClinicSelectionDelegate?
     var selectedClinic: Clinic?
@@ -57,7 +56,6 @@ class ClinicsViewController: UIViewController {
     @IBAction func chooseButtonTapped(_ sender: UIButton) {
         guard let clinic = selectedClinic else { return }
         delegate?.clinicSelected(clinic)
-        navigationController?.popViewController(animated: true)
     }
 }
 

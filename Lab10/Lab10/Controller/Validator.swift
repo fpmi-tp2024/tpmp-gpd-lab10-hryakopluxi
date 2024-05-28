@@ -8,6 +8,9 @@
 import Foundation
 
 class Validator {
+    
+    var CITIES = ["Brest", "Vitebsk", "Gomel", "Grodno", "Minsk", "Mogilev"]
+    
     static func isEmpty(_ text: String) -> Bool {
         return text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
