@@ -5,9 +5,73 @@
 //  Created by Yulia Raitsyna on 28.05.24.
 //
 
-import Foundation
 import UIKit
 
 class CreateAppointmentViewController: UIViewController {
     
+    var appointment: Appointment = Appointment(id: -1, clientId: -1, clinicId: -1, departmentId: -1, doctorName: "", date: "")
+    
+    var departments = DepartmentController.shared.getDepartmentsByClinicId(clinicId: ClientSession.shared.currentUser.clinicId)
+    
+    @IBOutlet weak var chooseDepartmentButton: UIButton!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var tableView: UITableView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTableView()
+        tableView.isHidden = true
+    }
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "departmentCell")
+    }
+    
+    @IBAction func chooseDepartment(_ sender: Any) {
+        tableView.isHidden = false
+    }
+    
+
+    @IBAction func newAppointment(_ sender: Any) {
+        appointment.clientId = ClientSession.shared.currentUser.id
+        appointment.date = datePicker.date.toDateTimeString()
+        print(appointment.date)
+        appointment.clinicId = ClientSession.shared.currentUser.clinicId
+        appointment.doctorName = "Dr. Khodin"
+        AppointmentController.shared.addAppointment(appointment: appointment)
+
+        let clientInfoVC = self.storyboard!.instantiateViewController(withIdentifier: "showInfo") as! ClientInfoViewController
+        
+        if let viewControllers = self.navigationController?.viewControllers {
+            for viewController in viewControllers {
+                if let clientInfoVC = viewController as? ClientInfoViewController {
+                    self.navigationController?.popToViewController(clientInfoVC, animated: true)
+                    break
+                }
+            }
+        }
+    }
+    
+
+}
+
+extension CreateAppointmentViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return departments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "departmentCell", for: indexPath)
+        cell.textLabel?.text = departments[indexPath.row].specialization
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedDepartment = departments[indexPath.row]
+        chooseDepartmentButton.setTitle(selectedDepartment.specialization, for: .normal)
+        appointment.departmentId = selectedDepartment.id
+        tableView.isHidden = true
+    }
 }

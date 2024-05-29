@@ -14,7 +14,7 @@ class AppointmentController {
     
     // MARK: - Public Methods
     
-    func createAppointment(clientId: Int, clinicId: Int, departmentId: Int, doctorName: String, date: Date, address: String) -> Bool {
+    func createAppointment(clientId: Int, clinicId: Int, departmentId: Int, doctorName: String, date: Date, address: String) -> Int {
         let appointmentId = UUID().hashValue
         let dateString = date.toDateTimeString()
         let appointment = Appointment(id: appointmentId, clientId: clientId, clinicId: clinicId, departmentId: departmentId, doctorName: doctorName, date: dateString)
@@ -31,25 +31,19 @@ class AppointmentController {
     }
     
     func rescheduleAppointment(appointmentId: Int, newDateString: String) -> Bool {
-        
-        let index = appointments.firstIndex(where: { $0.id == appointmentId })
-        
-        if index != nil && database.rescheduleAppointment(appointmentId: appointmentId, newDateString: newDateString){
-            appointments[index!].date = newDateString
-            return true
-        }
-        
-        print("Invalid appointment")
-        return false
+        return database.rescheduleAppointment(appointmentId: appointmentId, newDateString: newDateString)
     }
     
     func getAppointmentById(appointmentId: Int) -> Appointment? {
         return database.getAppointmentById(appointmentId)
     }
     
-    func addAppointment(_ appointment: Appointment) -> Bool {
-        appointments.append(appointment)
-        return database.addAppointment(appointment)
+    func addAppointment(appointment: Appointment) {
+        let id = database.addAppointment(appointment)
+        var newApp = appointment
+        newApp.id = id
+        appointments.append(newApp)
+        print(newApp)
     }
     
     func getAppointmentsByClientId(clientId: Int) -> [Appointment] {

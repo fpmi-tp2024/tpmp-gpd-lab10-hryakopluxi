@@ -5,13 +5,14 @@ import CoreLocation
 class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
     
     var isAgreed = false
+    var isSuccessful = true
     var selectedClinic: Clinic?
-
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-
+    
     @IBOutlet weak var agreementSwitch: UISwitch!
     @IBAction func agreementChecked(_ sender: Any) {
         if agreementSwitch.isOn {
@@ -33,9 +34,9 @@ class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var selectClinicButton: UIButton!
-
+    
     var clinics: [Clinic] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerButton.isEnabled = false
@@ -43,16 +44,16 @@ class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
         clinics = ClinicController.shared.getAllClinics()
         updateView()
     }
-
+    
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
         updateView()
     }
-
+    
     func updateView() {
         let showRegister = segmentedControl.selectedSegmentIndex == 1
         registerView.isHidden = !showRegister
     }
-
+    
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         guard let login = loginTextField.text, let password = passwordTextField.text else {
             showError("Please fill in all the fields.")
@@ -65,7 +66,7 @@ class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
         }
         
         let passHash = hashPassword(password)
-
+        
         if let user = ClientController.shared.getUserByLogin(login: login), user.passHash == passHash {
             ClientSession.shared.currentUser = user
             performSegue(withIdentifier: "showInfo", sender: user)
@@ -73,7 +74,7 @@ class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
             showError("Invalid login or password")
         }
     }
-
+    
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         guard let login = registerLoginTextField.text,
               let password = registerPasswordTextField.text,
@@ -82,67 +83,66 @@ class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
               let city = cityTextField.text,
               let houseNumber = houseNumberTextField.text else {
             showError("Please fill in all the fields.")
+            isSuccessful = false
             return
         }
         
         if Validator.isEmpty(login) || Validator.isEmpty(password) || Validator.isEmpty(name) || Validator.isEmpty(street) || Validator.isEmpty(houseNumber) || Validator.isEmpty(city) {
             showError("All fields are required.")
+            isSuccessful = false
             return
         }
         
         if !Validator.isStrongPassword(password) {
             showError("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.")
+            isSuccessful = false
             return
         }
         
         if !Validator.containsOnlyLetters(street) || !Validator.containsOnlyLetters(city) {
             showError("Street name and city should contain only letters.")
+            isSuccessful = false
             return
         }
         
         if !Validator.containsOnlyNumbers(houseNumber) {
             showError("House number should contain only numbers.")
+            isSuccessful = false
             return
         }
         
         if !isAgreed {
             showError("Firstly agree to terms.")
+            isSuccessful = false
             return
         }
         
-        guard let selectedClinic = selectedClinic else {
-            showError("Please choose a clinic.")
+        if ClientSession.shared.currentUser.clinicId == -1 {
+            showError("Please choose a clinic")
+            isSuccessful = false
             return
         }
         
         let passHash = hashPassword(password)
         let address = "\(street) \(houseNumber), \(city)"
         
-        addressToCoords(address: address) { [weak self] coordinate, error in
-            guard let self = self else { return }
-            if let error = error {
-                self.showError("Failed to get coordinates: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let coordinate = coordinate else {
-                self.showError("Failed to get coordinates")
-                return
-            }
-            
-            if let user = ClientController.shared.registerUser(
-                login: login,
-                passHash: passHash,
-                clinicId: selectedClinic.id,
-                name: name,
-                address: address,
-                addressCoords: "\(coordinate.latitude),\(coordinate.longitude)") {
-                // Perform segue to ClientInfoViewController
-                ClientSession.shared.currentUser = user
-                self.performSegue(withIdentifier: "showInfo", sender: user)
-            } else {
-                self.showError("Registration failed")
-            }
+        if let user = ClientController.shared.registerUser(
+            login: login,
+            passHash: passHash,
+            clinicId: ClientSession.shared.currentUser.clinicId,
+            name: name,
+            address: address,
+            addressCoords: address) {
+            // Perform segue to ClientInfoViewController
+            ClientSession.shared.currentUser = user
+            print(ClientSession.shared.currentUser)
+        } else {
+            self.showError("Registration failed")
+            isSuccessful = false
+        }
+        
+        if isSuccessful {
+            self.performSegue(withIdentifier: "showInfo", sender: ClientSession.shared.currentUser)
         }
     }
     
@@ -182,17 +182,26 @@ class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
         }
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "showInfo" {
+            // Return false to prevent the segue from being performed automatically
+            return false
+        }
+        return true
+    }
+
+    
     @IBAction func selectClinicTapped(_ sender: UIButton) {
         if let clinicsVC = navigationController?.topViewController as? ClinicsViewController {
-                clinicsVC.delegate = self
-            } else {
-                performSegue(withIdentifier: "showClinics", sender: nil)
-            }
+            clinicsVC.delegate = self
+        } else {
+            performSegue(withIdentifier: "showClinics", sender: nil)
+        }
     }
     
     func clinicSelected(_ clinic: Clinic) {
         selectedClinic = clinic
         print("Selected clinic: \(clinic)") // Print clinic info in console
-
+        
     }
 }

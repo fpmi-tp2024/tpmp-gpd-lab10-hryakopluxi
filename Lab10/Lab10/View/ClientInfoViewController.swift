@@ -7,6 +7,7 @@
 import Foundation
 import UIKit
 
+
 class ClientInfoViewController: UIViewController {
     
     @IBOutlet weak var fullNameLabel: UILabel!
@@ -27,46 +28,63 @@ class ClientInfoViewController: UIViewController {
     var user: Client!
     var clinic: Clinic!
     var departments: [Department] = []
-    var appointments: [Appointment] = [] // New array to store appointments
+    var appointments: [Appointment] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Register the custom table view cell
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         tableView.register(AppointmentTableViewCell.self, forCellReuseIdentifier: "appointmentCell")
-        
-        appointments = AppointmentController.shared.getAppointmentsByClientId(clientId: ClientSession.shared.currentUser.id)
-        
-        fullNameLabel.text = ClientSession.shared.currentUser.name
-        addressLabel.text = ClientSession.shared.currentUser.address
-        
-        clinicLabel.text = ClinicController.shared.getClinicById(clinicId: ClientSession.shared.currentUser.clinicId)?.name
-        
         
         tableView.delegate = self
         tableView.dataSource = self
         
-        infoView.isHidden = true // Hide infoView initially
+        infoView.isHidden = true
+        
+        loadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+        infoView.isHidden = true
+    }
+    
+    func loadData() {
+        user = ClientSession.shared.currentUser
+        appointments = AppointmentController.shared.getAppointmentsByClientId(clientId: user.id)
+        
+        fullNameLabel.text = user.name
+        addressLabel.text = user.address
+        
+        clinic = ClinicController.shared.getClinicById(clinicId: user.clinicId)
+        clinicLabel.text = clinic?.name
+        
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAppointments", let appointmentsVC = segue.destination as? CreateAppointmentViewController, let department = sender as? Department {
-            
-        } else if segue.identifier == "changeClinic", let clinicsVC = segue.destination as? ClinicsViewController {
-            clinicsVC.delegate = self
         }
     }
     
-    @IBAction func changeClinic(_ sender: Any) {
-        performSegue(withIdentifier: "changeClinic", sender: nil)
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "newAppointment" || identifier == "editAppointment" {
+            return false
+        }
+        return true
     }
     
     @IBAction func getNewAppointment(_ sender: Any) {
-        // Add your action code here
+        performSegue(withIdentifier: "newAppointment", sender: nil)
+    }
+    
+    @IBAction func editAppointment(_ sender: Any) {
+        performSegue(withIdentifier: "editAppointment", sender: nil)
     }
     
     func displayAppointmentDetails(_ appointment: Appointment) {
-        let clinic = ClinicController.shared.getClinicById(clinicId: ClientSession.shared.currentUser.clinicId)
+        clinic = ClinicController.shared.getClinicById(clinicId: user.clinicId)
         clinicTitleLabel.text = clinic?.name
         
         let department = DepartmentController.shared.getDepartmentById(id: appointment.departmentId)
@@ -102,6 +120,22 @@ extension ClientInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedAppointment = appointments[indexPath.row]
         displayAppointmentDetails(selectedAppointment)
+        
+        AppointmentSession.shared.editedAppointmentId = selectedAppointment.id
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            
+            _ = AppointmentController.shared.cancelAppointment(appointmentId: appointments[indexPath.row].id)
+            
+            //delete from db
+            appointments.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+        }
     }
     
     @objc func editButtonTapped(_ sender: UIButton) {
@@ -127,10 +161,4 @@ extension ClientInfoViewController: ClinicSelectionDelegate {
 
 class AppointmentTableViewCell: UITableViewCell {
     @IBOutlet weak var appointmentLabel: UILabel!
-    
-    @IBAction func editAppointment(_ sender: Any) {
-        
-    }
-    
-    
 }

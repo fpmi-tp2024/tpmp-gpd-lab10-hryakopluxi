@@ -56,6 +56,9 @@ class ClinicsViewController: UIViewController {
     @IBAction func chooseButtonTapped(_ sender: UIButton) {
         guard let clinic = selectedClinic else { return }
         delegate?.clinicSelected(clinic)
+        ClientSession.shared.currentUser.clinicId = clinic.id
+        print(ClientSession.shared.currentUser)
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 

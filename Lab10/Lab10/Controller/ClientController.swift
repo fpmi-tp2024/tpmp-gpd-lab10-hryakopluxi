@@ -17,8 +17,9 @@ class ClientController {
     
     func registerUser(login: String, passHash: String, clinicId: Int, name: String, address: String, addressCoords: String) -> Client? {
         let userId = UUID().hashValue
-        let user = Client(id: userId, login: login, passHash: passHash, clinicId: clinicId, name: name, address: address, addressCoords: addressCoords)
-        database.addUser(user)
+        var user = Client(id: userId, login: login, passHash: passHash, clinicId: clinicId, name: name, address: address)
+        var id = database.addUser(user)
+        user.id = id
         return user
     }
     

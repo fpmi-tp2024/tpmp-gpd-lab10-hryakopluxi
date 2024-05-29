@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class AppointmentSession {
+    static let shared = AppointmentSession()
+    
+    var editedAppointmentId : Int
+    
+    private init() {
+        editedAppointmentId = -1
+    }
+
+    
+}

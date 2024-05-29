@@ -18,6 +18,7 @@ class ClinicsMapViewController: UIViewController, MKMapViewDelegate, CLLocationM
     @IBOutlet weak var chooseButton: UIButton!
     
     var clinics: [Clinic] = []
+    var selectedClinic: Clinic!
     var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
@@ -28,6 +29,12 @@ class ClinicsMapViewController: UIViewController, MKMapViewDelegate, CLLocationM
         showClinicsOnMap()
         updateClinicDetails(with: nil)
         chooseButton.isHidden = true
+    }
+    
+    @IBAction func chooseAnnotation(_ sender: Any) {
+        ClientSession.shared.currentUser.clinicId = selectedClinic.id
+        print(ClientSession.shared.currentUser)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func setupLocationManager() {
@@ -54,7 +61,7 @@ class ClinicsMapViewController: UIViewController, MKMapViewDelegate, CLLocationM
         
         for clinic in clinics {
             guard let coordinates = parseCoordinates(from: clinic.addressCoords) else { continue }
-            print("Clinic: \(clinic.name), Coordinates: \(coordinates.latitude), \(coordinates.longitude)") // Print coordinates
+            print("Clinic: \(clinic.name), Coordinates: \(coordinates.latitude), \(coordinates.longitude)")
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinates
             annotation.title = clinic.name
@@ -111,9 +118,11 @@ class ClinicsMapViewController: UIViewController, MKMapViewDelegate, CLLocationM
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let selectedAnnotation = view.annotation as? MKPointAnnotation,
-              let selectedClinic = clinics.first(where: { $0.name == selectedAnnotation.title }) else {
+              let selectedClinicAnnotation = clinics.first(where: { $0.name == selectedAnnotation.title })
+        else {
             return
         }
+        self.selectedClinic = selectedClinicAnnotation
         updateClinicDetails(with: selectedClinic)
     }
     
@@ -148,6 +157,7 @@ class ClinicsMapViewController: UIViewController, MKMapViewDelegate, CLLocationM
             userAnnotation.title = "You are here"
             self.mapView.addAnnotation(userAnnotation)
             
+            self.selectedClinic = nearestClinic
             self.updateClinicDetails(with: nearestClinic)
         }
     }

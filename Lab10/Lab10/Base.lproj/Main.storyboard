@@ -6,14 +6,13 @@
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Login Register View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginRegisterViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="BYZ-38-t0r" customClass="LoginRegisterViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -188,7 +187,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Choose on map"/>
                                 <connections>
-                                    <segue destination="bs4-0O-5q4" kind="show" id="UAe-Wv-Ud5"/>
+                                    <segue destination="bs4-0O-5q4" kind="show" identifier="showClinicsMap" id="UAe-Wv-Ud5"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ijU-Wc-rDZ">
@@ -273,7 +272,7 @@
         <!--Clinics Map View Controller-->
         <scene sceneID="chB-tH-HV0">
             <objects>
-                <viewController id="bs4-0O-5q4" customClass="ClinicsMapViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showClinicsMap" id="bs4-0O-5q4" customClass="ClinicsMapViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lEo-GH-cbU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -306,6 +305,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Choose"/>
+                                        <connections>
+                                            <action selector="chooseAnnotation:" destination="bs4-0O-5q4" eventType="touchUpInside" id="Upm-na-9Ny"/>
+                                        </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KIc-j2-1E1">
                                         <rect key="frame" x="0.0" y="83" width="340" height="68"/>
@@ -405,7 +407,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Edit"/>
                                         <connections>
-                                            <segue destination="hNb-Zc-EWb" kind="show" id="lgp-xx-NbN"/>
+                                            <segue destination="hNb-Zc-EWb" kind="show" identifier="editAppointment" id="lgp-xx-NbN"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Department" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnZ-oq-gPJ">
@@ -450,6 +452,15 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIg-A6-LCQ">
+                                        <rect key="frame" x="297" y="8" width="54" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Edit"/>
+                                        <connections>
+                                            <action selector="editAppointment:" destination="eWa-Zi-DFu" eventType="touchUpInside" id="Ibx-jm-0hN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -460,16 +471,7 @@
                                 <buttonConfiguration key="configuration" style="gray" title="New Appointment"/>
                                 <connections>
                                     <action selector="getNewAppointment:" destination="eWa-Zi-DFu" eventType="touchUpInside" id="FE2-sZ-CKq"/>
-                                    <segue destination="3jD-Do-Lpz" kind="show" id="IZr-JW-0GQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifu-1J-i72">
-                                <rect key="frame" x="16" y="183" width="127" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Change clinic"/>
-                                <connections>
-                                    <action selector="changeClinic:" destination="eWa-Zi-DFu" eventType="touchUpInside" id="VVo-g7-Eza"/>
+                                    <segue destination="3jD-Do-Lpz" kind="show" identifier="newAppointment" id="SPl-aM-kKH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -480,7 +482,6 @@
                     <connections>
                         <outlet property="addressInfoLabel" destination="qfn-Nb-53P" id="Bvy-ii-pBM"/>
                         <outlet property="addressLabel" destination="TAT-dd-vuJ" id="k0P-pQ-PeC"/>
-                        <outlet property="changeClinicButton" destination="ifu-1J-i72" id="iy0-Bs-Gc4"/>
                         <outlet property="clientIcon" destination="Or3-Mx-rpe" id="a2X-K0-kXd"/>
                         <outlet property="clinicLabel" destination="QWG-hw-hmL" id="rNM-yR-XJY"/>
                         <outlet property="clinicTitleLabel" destination="sJ2-bD-eJK" id="0Ak-HE-Ayv"/>
@@ -497,25 +498,14 @@
             </objects>
             <point key="canvasLocation" x="-1043.5114503816794" y="7.042253521126761"/>
         </scene>
-        <!--Appointment View Controller-->
+        <!--Create Appointment View Controller-->
         <scene sceneID="KdY-H4-6A8">
             <objects>
-                <viewController storyboardIdentifier="newAppointment" id="3jD-Do-Lpz" customClass="AppointmentViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newAppointment" id="3jD-Do-Lpz" customClass="CreateAppointmentViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i69-ip-4Ar">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LYz-dI-TUb">
-                                <rect key="frame" x="68" y="343" width="257" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <menu key="menu" id="F2g-Rw-0A9">
-                                    <children>
-                                        <command title="Item 1" id="fH6-Vt-icv"/>
-                                        <command title="Item 2" id="Eyp-jT-4I1"/>
-                                    </children>
-                                </menu>
-                                <state key="normal" title="Choose department"/>
-                            </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="mZj-8s-RBF">
                                 <rect key="frame" x="68" y="381" width="257" height="98"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -533,68 +523,93 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Get appointment"/>
                                 <connections>
-                                    <action selector="getNewAppointment:" destination="3jD-Do-Lpz" eventType="touchUpInside" id="niC-rc-yod"/>
+                                    <action selector="newAppointment:" destination="3jD-Do-Lpz" eventType="touchUpInside" id="QVA-1G-t5y"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGV-Wu-esa">
+                                <rect key="frame" x="68" y="331" width="257" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Choose Department"/>
+                                <connections>
+                                    <action selector="chooseDepartment:" destination="3jD-Do-Lpz" eventType="touchUpInside" id="37g-dY-acR"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3aA-bG-zAU">
+                                <rect key="frame" x="68" y="374" width="257" height="203"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="MNV-oR-6ni">
+                                        <rect key="frame" x="0.0" y="50" width="257" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="departmentCell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MNV-oR-6ni" id="0Y6-TY-An7">
+                                            <rect key="frame" x="0.0" y="0.0" width="257" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndK-ef-u9A">
+                                                    <rect key="frame" x="16" y="11" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="b9t-cb-0dp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Wvy-2P-2gH"/>
                     <connections>
-                        <outlet property="datePicker" destination="mZj-8s-RBF" id="T2X-y4-7RA"/>
-                        <outlet property="departmentMenu" destination="F2g-Rw-0A9" id="hlY-Bz-0X5"/>
-                        <outlet property="departmentMenuButton" destination="LYz-dI-TUb" id="CuW-fL-zLu"/>
+                        <outlet property="chooseDepartmentButton" destination="nGV-Wu-esa" id="4QB-md-U3e"/>
+                        <outlet property="datePicker" destination="mZj-8s-RBF" id="aYb-gr-Inj"/>
+                        <outlet property="tableView" destination="3aA-bG-zAU" id="cty-ir-uQg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EUe-JR-eI4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-190.07633587786259" y="6.3380281690140849"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Appointment View Controller-->
         <scene sceneID="WXq-K3-VsK">
             <objects>
-                <viewController storyboardIdentifier="editAppointment" id="hNb-Zc-EWb" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editAppointment" id="hNb-Zc-EWb" customClass="EditAppointmentViewController" customModule="Lab10" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4K7-j6-hCp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J6X-Mu-3FG">
-                                <rect key="frame" x="68" y="361" width="257" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <menu key="menu" id="2BS-8e-GeC">
-                                    <children>
-                                        <command title="Item 1" id="Z2E-az-cZM"/>
-                                        <command title="Item 2" id="Z9Y-hY-fce"/>
-                                    </children>
-                                </menu>
-                                <state key="normal" title="Choose department"/>
-                            </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="m9N-6f-LRp">
-                                <rect key="frame" x="68" y="399" width="257" height="98"/>
+                                <rect key="frame" x="68" y="374" width="257" height="98"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgF-wh-rCG">
+                                <rect key="frame" x="120" y="480" width="154" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Edit appointment"/>
+                                <connections>
+                                    <action selector="editAppointment:" destination="hNb-Zc-EWb" eventType="touchUpInside" id="jjn-ll-83v"/>
+                                    <action selector="getNewAppointment:" destination="3jD-Do-Lpz" eventType="touchUpInside" id="JUY-d3-rzC"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Appointement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fE-gi-kis">
-                                <rect key="frame" x="101" y="312" width="192" height="29"/>
+                                <rect key="frame" x="101" y="337" width="192" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgF-wh-rCG">
-                                <rect key="frame" x="120" y="505" width="154" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Edit appointment"/>
-                                <connections>
-                                    <action selector="getNewAppointment:" destination="3jD-Do-Lpz" eventType="touchUpInside" id="JUY-d3-rzC"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XIa-v1-r8O"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="cmF-H9-Hzj"/>
+                    <connections>
+                        <outlet property="datePicker" destination="m9N-6f-LRp" id="ntP-N2-buu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zag-bM-4qd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -620,7 +635,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QOK-Et-azT"/>
+        <segue reference="Xfg-GR-gfl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
