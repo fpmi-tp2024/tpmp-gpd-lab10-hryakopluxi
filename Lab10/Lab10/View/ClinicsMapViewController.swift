@@ -11,6 +11,8 @@ import CoreLocation
 
 class ClinicsMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    @IBOutlet weak var pediatricIcon: UIImageView!
+    @IBOutlet weak var hospitalIcon: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var clinicNameLabel: UILabel!
     @IBOutlet weak var clinicAddressLabel: UILabel!
@@ -123,6 +125,16 @@ class ClinicsMapViewController: UIViewController, MKMapViewDelegate, CLLocationM
             return
         }
         self.selectedClinic = selectedClinicAnnotation
+        if(selectedClinic.isPediatric) {
+            self.pediatricIcon.image = UIImage(named: "ChildrenIcon")
+        }
+        else {
+            self.pediatricIcon.image = UIImage(named: "AdultIcon")
+        }
+        
+        if(selectedClinic.isHospital) {
+            self.hospitalIcon.image = UIImage(named: "HospitalIcon")
+        }
         updateClinicDetails(with: selectedClinic)
     }
     
@@ -148,7 +160,7 @@ class ClinicsMapViewController: UIViewController, MKMapViewDelegate, CLLocationM
             return (clinic, coordinates)
         }).min(by: { userLocation.distance(to: $0.coordinate) < userLocation.distance(to: $1.coordinate) })?.clinic else { return }
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [self] in
             let region = MKCoordinateRegion(center: userLocation, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
             self.mapView.setRegion(region, animated: true)
             
@@ -158,6 +170,18 @@ class ClinicsMapViewController: UIViewController, MKMapViewDelegate, CLLocationM
             self.mapView.addAnnotation(userAnnotation)
             
             self.selectedClinic = nearestClinic
+            
+            if(nearestClinic.isPediatric) {
+                self.pediatricIcon.image = UIImage(named: "ChildrenIcon")
+            }
+            else {
+                self.pediatricIcon.image = UIImage(named: "AdultIcon")
+            }
+            
+            if(nearestClinic.isHospital) {
+                self.hospitalIcon.image = UIImage(named: "HospitalIcon")
+            }
+            
             self.updateClinicDetails(with: nearestClinic)
         }
     }

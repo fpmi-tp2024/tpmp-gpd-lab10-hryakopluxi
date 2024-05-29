@@ -1,0 +1,168 @@
+
+/* Class = "UITextField"; placeholder = "First name"; ObjectID = "0b7-Ro-Ta4"; */
+"0b7-Ro-Ta4.placeholder" = "First name";
+
+/* Class = "UIButton"; configuration.title = "Choose hospital"; ObjectID = "2NM-vT-cpR"; */
+"2NM-vT-cpR.configuration.title" = "Choose hospital";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "2NM-vT-cpR"; */
+"2NM-vT-cpR.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Agree with terms"; ObjectID = "3s2-2C-Kbf"; */
+"3s2-2C-Kbf.text" = "Agree with terms";
+
+/* Class = "UITextField"; placeholder = "City"; ObjectID = "4bM-YZ-wiH"; */
+"4bM-YZ-wiH.placeholder" = "City";
+
+/* Class = "UIButton"; configuration.title = "Choose on map"; ObjectID = "7b0-9u-tst"; */
+"7b0-9u-tst.configuration.title" = "Choose on map";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7b0-9u-tst"; */
+"7b0-9u-tst.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Edit Appointement"; ObjectID = "8fE-gi-kis"; */
+"8fE-gi-kis.text" = "Edit Appointement";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Enn-8u-lGT"; */
+"Enn-8u-lGT.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Street"; ObjectID = "FFj-ew-j2p"; */
+"FFj-ew-j2p.placeholder" = "Street";
+
+/* Class = "UILabel"; text = "Appointement"; ObjectID = "FcK-2r-KbZ"; */
+"FcK-2r-KbZ.text" = "Appointement";
+
+/* Class = "UITextField"; placeholder = "Login"; ObjectID = "K93-XD-JPe"; */
+"K93-XD-JPe.placeholder" = "Login";
+
+/* Class = "UIButton"; configuration.title = "Edit"; ObjectID = "KZs-lR-jy8"; */
+"KZs-lR-jy8.configuration.title" = "Edit";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "KZs-lR-jy8"; */
+"KZs-lR-jy8.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Choose your clinic"; ObjectID = "LQh-Jd-LVB"; */
+"LQh-Jd-LVB.text" = "Choose your clinic";
+
+/* Class = "UIButton"; configuration.title = "Register"; ObjectID = "MVE-vp-wEc"; */
+"MVE-vp-wEc.configuration.title" = "Register";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "MVE-vp-wEc"; */
+"MVE-vp-wEc.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Department"; ObjectID = "MnZ-oq-gPJ"; */
+"MnZ-oq-gPJ.text" = "Department";
+
+/* Class = "UIButton"; configuration.title = "Edit appointment"; ObjectID = "NgF-wh-rCG"; */
+"NgF-wh-rCG.configuration.title" = "Edit appointment";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "NgF-wh-rCG"; */
+"NgF-wh-rCG.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Sign in"; ObjectID = "ODz-Ej-BLY"; */
+"ODz-Ej-BLY.configuration.title" = "Sign in";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ODz-Ej-BLY"; */
+"ODz-Ej-BLY.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Choose"; ObjectID = "PGn-wR-bCL"; */
+"PGn-wR-bCL.configuration.title" = "Choose";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PGn-wR-bCL"; */
+"PGn-wR-bCL.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Login"; ObjectID = "Phy-hp-SWH"; */
+"Phy-hp-SWH.placeholder" = "Login";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "Q9D-ZA-Upm"; */
+"Q9D-ZA-Upm.text" = "Address";
+
+/* Class = "UILabel"; text = "Clinic"; ObjectID = "QWG-hw-hmL"; */
+"QWG-hw-hmL.text" = "Clinic";
+
+/* Class = "UILabel"; text = "New Appointement"; ObjectID = "Shj-aL-EvU"; */
+"Shj-aL-EvU.text" = "New Appointement";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "TAT-dd-vuJ"; */
+"TAT-dd-vuJ.text" = "Address";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "UG4-H7-pvA"; */
+"UG4-H7-pvA.placeholder" = "Password";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Yme-iB-BYa"; */
+"Yme-iB-BYa.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "cbc-hD-e4J"; */
+"cbc-hD-e4J.text" = "Date";
+
+/* Class = "UILabel"; text = "Doctor"; ObjectID = "dyd-Xg-SF0"; */
+"dyd-Xg-SF0.text" = "Doctor";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "e59-Mc-Elq"; */
+"e59-Mc-Elq.text" = "Time";
+
+/* Class = "UILabel"; text = "Full Name"; ObjectID = "eR6-hU-31i"; */
+"eR6-hU-31i.text" = "Full Name";
+
+/* Class = "UIButton"; configuration.title = "Choose"; ObjectID = "ehp-sO-NwJ"; */
+"ehp-sO-NwJ.configuration.title" = "Choose";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ehp-sO-NwJ"; */
+"ehp-sO-NwJ.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "№"; ObjectID = "fIM-hj-CpQ"; */
+"fIM-hj-CpQ.placeholder" = "№";
+
+/* Class = "UIButton"; configuration.title = "Get appointment"; ObjectID = "gCx-up-Z79"; */
+"gCx-up-Z79.configuration.title" = "Get appointment";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gCx-up-Z79"; */
+"gCx-up-Z79.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Edit"; ObjectID = "gIg-A6-LCQ"; */
+"gIg-A6-LCQ.configuration.title" = "Edit";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gIg-A6-LCQ"; */
+"gIg-A6-LCQ.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "iri-SF-l17"; */
+"iri-SF-l17.text" = "Address";
+
+/* Class = "UILabel"; text = "Hospital"; ObjectID = "j6K-7K-zLJ"; */
+"j6K-7K-zLJ.text" = "Hospital";
+
+/* Class = "UILabel"; text = "Hospital"; ObjectID = "lbp-0Y-Bkt"; */
+"lbp-0Y-Bkt.text" = "Hospital";
+
+/* Class = "UIButton"; configuration.title = "Choose Department"; ObjectID = "nGV-Wu-esa"; */
+"nGV-Wu-esa.configuration.title" = "Choose Department";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "nGV-Wu-esa"; */
+"nGV-Wu-esa.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ndK-ef-u9A"; */
+"ndK-ef-u9A.text" = "Label";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "qfn-Nb-53P"; */
+"qfn-Nb-53P.text" = "Address";
+
+/* Class = "UIButton"; configuration.title = "New Appointment"; ObjectID = "rPD-A8-qCt"; */
+"rPD-A8-qCt.configuration.title" = "New Appointment";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rPD-A8-qCt"; */
+"rPD-A8-qCt.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Clinic"; ObjectID = "sJ2-bD-eJK"; */
+"sJ2-bD-eJK.text" = "Clinic";
+
+/* Class = "UISegmentedControl"; tUi-gf-Pk4.segmentTitles[0] = "Login"; ObjectID = "tUi-gf-Pk4"; */
+"tUi-gf-Pk4.segmentTitles[0]" = "Login";
+
+/* Class = "UISegmentedControl"; tUi-gf-Pk4.segmentTitles[1] = "Register"; ObjectID = "tUi-gf-Pk4"; */
+"tUi-gf-Pk4.segmentTitles[1]" = "Register";
+
+/* Class = "UITextField"; placeholder = "Repeat password"; ObjectID = "wkI-Gg-bxP"; */
+"wkI-Gg-bxP.placeholder" = "Repeat password";
+
+/* Class = "UITextField"; placeholder = "Last name"; ObjectID = "zzA-6R-epa"; */
+"zzA-6R-epa.placeholder" = "Last name";

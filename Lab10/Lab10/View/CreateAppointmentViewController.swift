@@ -42,9 +42,14 @@ class CreateAppointmentViewController: UIViewController {
     @IBAction func newAppointment(_ sender: Any) {
         appointment.clientId = ClientSession.shared.currentUser.id
         appointment.date = datePicker.date.toDateTimeString()
-        print(appointment.date)
         appointment.clinicId = ClientSession.shared.currentUser.clinicId
         appointment.doctorName = "Dr. Khodin"
+        
+        if(appointment.departmentId == -1) {
+            showError("Please, choose department")
+            return
+        }
+        
         AppointmentController.shared.addAppointment(appointment: appointment)
 
         let clientInfoVC = self.storyboard!.instantiateViewController(withIdentifier: "showInfo") as! ClientInfoViewController
@@ -101,6 +106,12 @@ class CreateAppointmentViewController: UIViewController {
                 }
             }
         }
+    
+    func showError(_ message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 
 }
 
@@ -122,3 +133,4 @@ extension CreateAppointmentViewController: UITableViewDelegate, UITableViewDataS
         tableView.isHidden = true
     }
 }
+

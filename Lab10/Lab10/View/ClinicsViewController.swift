@@ -18,6 +18,9 @@ class ClinicsViewController: UIViewController {
     @IBOutlet weak var clinicDescriptionTextView: UITextView!
     @IBOutlet weak var chooseButton: UIButton!
     
+    @IBOutlet weak var pediatricIcon: UIImageView!
+    @IBOutlet weak var hospitalIcon: UIImageView!
+    
     var clinics: [Clinic] = []
     weak var delegate: ClinicSelectionDelegate?
     var selectedClinic: Clinic?
@@ -32,6 +35,8 @@ class ClinicsViewController: UIViewController {
         // Hide clinic details initially
         updateClinicDetails(with: nil)
         chooseButton.isHidden = true
+        hospitalIcon.isHidden = true
+        pediatricIcon.isHidden = true
     }
     
     func updateClinicDetails(with clinic: Clinic?) {
@@ -43,12 +48,16 @@ class ClinicsViewController: UIViewController {
             clinicAddressLabel.isHidden = false
             clinicDescriptionTextView.isHidden = false
             chooseButton.isHidden = false
+            hospitalIcon.isHidden = false
+            pediatricIcon.isHidden = false
             selectedClinic = clinic
         } else {
             clinicNameLabel.isHidden = true
             clinicAddressLabel.isHidden = true
             clinicDescriptionTextView.isHidden = true
             chooseButton.isHidden = true
+            hospitalIcon.isHidden = true
+            pediatricIcon.isHidden = true
             selectedClinic = nil
         }
     }
@@ -75,6 +84,17 @@ extension ClinicsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedClinic = clinics[indexPath.row]
+        if(selectedClinic.isPediatric) {
+            pediatricIcon.image = UIImage(named: "ChildrenIcon")
+        }
+        else {
+            pediatricIcon.image = UIImage(named: "AdultIcon")
+        }
+        
+        if(selectedClinic.isHospital) {
+            hospitalIcon.image = UIImage(named: "HospitalIcon")
+        }
+        
         updateClinicDetails(with: selectedClinic)
     }
 }

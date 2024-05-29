@@ -10,6 +10,8 @@ import UIKit
 
 class ClientInfoViewController: UIViewController {
     
+    @IBOutlet weak var pediatricIcon: UIImageView!
+    @IBOutlet weak var hospitalIcon: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var clinicLabel: UILabel!
     @IBOutlet weak var changeClinicButton: UIButton!
@@ -87,6 +89,17 @@ class ClientInfoViewController: UIViewController {
     func displayAppointmentDetails(_ appointment: Appointment) {
         clinic = ClinicController.shared.getClinicById(clinicId: user.clinicId)
         clinicTitleLabel.text = clinic?.name
+        
+        if(clinic.isPediatric) {
+            pediatricIcon.image = UIImage(named: "ChildrenIcon")
+        }
+        else {
+            pediatricIcon.image = UIImage(named: "AdultIcon")
+        }
+        
+        if(clinic.isHospital) {
+            hospitalIcon.image = UIImage(named: "HospitalIcon")
+        }
         
         let department = DepartmentController.shared.getDepartmentById(id: appointment.departmentId)
         
