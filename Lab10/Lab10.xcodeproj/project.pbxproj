@@ -35,9 +35,9 @@
 		670E8CCA2C05F3530076BA0F /* EditAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CC92C05F3530076BA0F /* EditAppointmentViewController.swift */; };
 		670E8CCC2C05F3A60076BA0F /* CreateAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CCB2C05F3A60076BA0F /* CreateAppointmentViewController.swift */; };
 		670E8CDB2C0737010076BA0F /* AppointmentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CDA2C0737010076BA0F /* AppointmentSession.swift */; };
-		670E8CE02C0773710076BA0F /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 670E8CDF2C0773710076BA0F /* database.db */; };
 		670E8CE22C077B430076BA0F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 670E8CE12C077B430076BA0F /* Launch Screen.storyboard */; };
 		670E8CEA2C079A250076BA0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 670E8C692C0477640076BA0F /* Main.storyboard */; };
+		670E8CED2C079FE40076BA0F /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 670E8CEC2C079FE40076BA0F /* database.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,11 +90,11 @@
 		670E8CC92C05F3530076BA0F /* EditAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAppointmentViewController.swift; sourceTree = "<group>"; };
 		670E8CCB2C05F3A60076BA0F /* CreateAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppointmentViewController.swift; sourceTree = "<group>"; };
 		670E8CDA2C0737010076BA0F /* AppointmentSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentSession.swift; sourceTree = "<group>"; };
-		670E8CDF2C0773710076BA0F /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.db; sourceTree = "<group>"; };
 		670E8CE12C077B430076BA0F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		670E8CE62C0795E60076BA0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		670E8CE92C0798E50076BA0F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		670E8CEB2C079C740076BA0F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		670E8CEC2C079FE40076BA0F /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +153,7 @@
 				670E8C632C0477640076BA0F /* AppDelegate.swift */,
 				670E8C692C0477640076BA0F /* Main.storyboard */,
 				670E8C6F2C0477650076BA0F /* Assets.xcassets */,
-				670E8CDF2C0773710076BA0F /* database.db */,
+				670E8CEC2C079FE40076BA0F /* database.db */,
 				670E8C742C0477650076BA0F /* Info.plist */,
 				670E8C6C2C0477640076BA0F /* Lab10.xcdatamodeld */,
 				670E8CE12C077B430076BA0F /* Launch Screen.storyboard */,
@@ -336,7 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				670E8CE02C0773710076BA0F /* database.db in Resources */,
+				670E8CED2C079FE40076BA0F /* database.db in Resources */,
 				670E8CEA2C079A250076BA0F /* Main.storyboard in Resources */,
 				670E8C702C0477650076BA0F /* Assets.xcassets in Resources */,
 				670E8CE22C077B430076BA0F /* Launch Screen.storyboard in Resources */,
