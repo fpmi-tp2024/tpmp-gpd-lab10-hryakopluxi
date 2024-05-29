@@ -8,22 +8,36 @@
 
 ## Description
 
+
 ## Installation
-To install the application locally, follow these steps:
+To install and run this project, follow these steps:
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/fpmi-tp2024/tpmp-gpd-lab10-hryakopluxi
+   ```
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd tpmp-gpd-lab10-hryakopluxi
+   ```
+3. **Open the Project in Xcode**:
+   - Double-click the `Lab10.xcodeproj` file to open the project in Xcode.
+4. **Build and Run**:
+   - Select your target device or simulator.
+   - Click the `Run` button or use the shortcut `Cmd + R` to build and run the project.
 
-1. Download the archive for MacOS.
-2. Open the terminal and navigate to the root folder.
-3. Run the following command:
-    ```bash
-    ./bin/main
-    ```
 ## Usage
-
-After installing the application, follow these instructions to use it:
-
-1. Execute the application by running the `./bin/main` command in the terminal.
-2. Follow the on-screen prompts to interact with the application.
-
+1. **Launch the App**:
+   - Open the app on your device or simulator.
+2. **Authentication**:
+   - Enter your username and password to log in.
+   - If you don't have an account, switch to the registration tab and create a new account.
+3. **Clinic Selection**:
+   - Upon registration, the nearest clinic (for children or adults) is automatically determined based on your location. Alternatively, you can choose a clinic from the provided list.
+   - Explore the list of hospitals in the city and their departments, including their specializations.
+4. **Appointment Booking**:
+   - Once logged in, users can book appointments with general practitioners (pediatricians/therapists) or specialists.
+   - Manage booked appointments: cancel or reschedule them for another date or time.
+  
 ## Contributing
  
 * [Stanislau Senkevich](https://github.com/Stanislau-Senkevich) - 
