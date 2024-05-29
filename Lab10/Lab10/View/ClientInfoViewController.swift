@@ -41,6 +41,7 @@ class ClientInfoViewController: UIViewController {
         
         infoView.isHidden = true
         
+        clientIcon.image = UIImage(named: "ClientIcon")
         loadData()
     }
     
@@ -90,6 +91,7 @@ class ClientInfoViewController: UIViewController {
         let department = DepartmentController.shared.getDepartmentById(id: appointment.departmentId)
         
         departmentLabel.text = department?.specialization
+        addressInfoLabel.text = ClinicController.shared.getClinicById(clinicId: ClientSession.shared.currentUser.clinicId)?.address
         doctorNameLabel.text = appointment.doctorName
         
         let dateTimeComponents = appointment.date.components(separatedBy: " ")
