@@ -13,7 +13,6 @@
 		670E8C6B2C0477640076BA0F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 670E8C6A2C0477640076BA0F /* Base */; };
 		670E8C6E2C0477640076BA0F /* Lab10.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 670E8C6C2C0477640076BA0F /* Lab10.xcdatamodeld */; };
 		670E8C702C0477650076BA0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 670E8C6F2C0477650076BA0F /* Assets.xcassets */; };
-		670E8C732C0477650076BA0F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 670E8C722C0477650076BA0F /* Base */; };
 		670E8C7E2C0477650076BA0F /* Lab10Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8C7D2C0477650076BA0F /* Lab10Tests.swift */; };
 		670E8C882C0477650076BA0F /* Lab10UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8C872C0477650076BA0F /* Lab10UITests.swift */; };
 		670E8C8A2C0477650076BA0F /* Lab10UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8C892C0477650076BA0F /* Lab10UITestsLaunchTests.swift */; };
@@ -36,7 +35,8 @@
 		670E8CCA2C05F3530076BA0F /* EditAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CC92C05F3530076BA0F /* EditAppointmentViewController.swift */; };
 		670E8CCC2C05F3A60076BA0F /* CreateAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CCB2C05F3A60076BA0F /* CreateAppointmentViewController.swift */; };
 		670E8CDB2C0737010076BA0F /* AppointmentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8CDA2C0737010076BA0F /* AppointmentSession.swift */; };
-		670E8CDE2C073EEA0076BA0F /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 670E8CDD2C073EEA0076BA0F /* database.db */; };
+		670E8CE02C0773710076BA0F /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 670E8CDF2C0773710076BA0F /* database.db */; };
+		670E8CE22C077B430076BA0F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 670E8CE12C077B430076BA0F /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,6 @@
 		670E8C6A2C0477640076BA0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		670E8C6D2C0477640076BA0F /* Lab10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lab10.xcdatamodel; sourceTree = "<group>"; };
 		670E8C6F2C0477650076BA0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		670E8C722C0477650076BA0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		670E8C742C0477650076BA0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		670E8C792C0477650076BA0F /* Lab10Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Lab10Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		670E8C7D2C0477650076BA0F /* Lab10Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab10Tests.swift; sourceTree = "<group>"; };
@@ -90,7 +89,8 @@
 		670E8CC92C05F3530076BA0F /* EditAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAppointmentViewController.swift; sourceTree = "<group>"; };
 		670E8CCB2C05F3A60076BA0F /* CreateAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppointmentViewController.swift; sourceTree = "<group>"; };
 		670E8CDA2C0737010076BA0F /* AppointmentSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentSession.swift; sourceTree = "<group>"; };
-		670E8CDD2C073EEA0076BA0F /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = database.db; path = ../../../../Documents/database.db; sourceTree = "<group>"; };
+		670E8CDF2C0773710076BA0F /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.db; sourceTree = "<group>"; };
+		670E8CE12C077B430076BA0F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,10 +149,10 @@
 				670E8C632C0477640076BA0F /* AppDelegate.swift */,
 				670E8C692C0477640076BA0F /* Main.storyboard */,
 				670E8C6F2C0477650076BA0F /* Assets.xcassets */,
-				670E8CDD2C073EEA0076BA0F /* database.db */,
-				670E8C712C0477650076BA0F /* LaunchScreen.storyboard */,
+				670E8CDF2C0773710076BA0F /* database.db */,
 				670E8C742C0477650076BA0F /* Info.plist */,
 				670E8C6C2C0477640076BA0F /* Lab10.xcdatamodeld */,
+				670E8CE12C077B430076BA0F /* Launch Screen.storyboard */,
 			);
 			path = Lab10;
 			sourceTree = "<group>";
@@ -330,9 +330,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				670E8CDE2C073EEA0076BA0F /* database.db in Resources */,
+				670E8CE02C0773710076BA0F /* database.db in Resources */,
 				670E8C702C0477650076BA0F /* Assets.xcassets in Resources */,
-				670E8C732C0477650076BA0F /* Base in Resources */,
+				670E8CE22C077B430076BA0F /* Launch Screen.storyboard in Resources */,
 				670E8C6B2C0477640076BA0F /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,14 +422,6 @@
 				670E8C6A2C0477640076BA0F /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		670E8C712C0477650076BA0F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				670E8C722C0477650076BA0F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -557,17 +549,22 @@
 		670E8C8E2C0477650076BA0F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9W88GSA574;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lab10/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Clinics;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show nearby clinics";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby clinics";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -584,17 +581,22 @@
 		670E8C8F2C0477650076BA0F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9W88GSA574;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Lab10/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Clinics;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show nearby clinics";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby clinics";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
