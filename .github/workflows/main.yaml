@@ -18,11 +18,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Run tests
+- name: Run tests
       run: |
         xcodebuild test \
           -scheme Lab10 \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' \
+          -workspace Lab10/Lab10.xcworkspace \
+          -derivedDataPath Build/ \
           ONLY_ACTIVE_ARCH=YES
 
     - name: Build project
@@ -31,4 +33,6 @@ jobs:
         xcodebuild build \
           -scheme Lab10 \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' \
+          -workspace Lab10/Lab10.xcworkspace \
+          -derivedDataPath Build/ \
           ONLY_ACTIVE_ARCH=YES
