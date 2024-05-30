@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: 
+      - main
+      - dev
+  pull_request:
+    branches: 
+      - main
+      - dev
+
+jobs:
+  test-and-build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Xcode
+      uses: maxim-lobanov/setup-xcode@v2
+      with:
+        xcode-version: '14.0' # Update this to your required Xcode version
+
+    - name: Install dependencies
+      run: |
+        sudo xcode-select --switch /Applications/Xcode_14.0.app
+        xcodebuild -version
+
+    - name: Run tests
+      run: |
+        xcodebuild test \
+          -scheme Lab10 \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' \
+          ONLY_ACTIVE_ARCH=YES
+
+    - name: Build project
+      if: success()
+      run: |
+        xcodebuild build \
+          -scheme Lab10 \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' \
+          ONLY_ACTIVE_ARCH=YES
