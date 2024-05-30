@@ -52,7 +52,7 @@ To install and run this project, follow these steps:
   - Coordinated the project development and managed timelines and deliverables.
   - Documented the application features, and technical specifications in GitHub Wiki and GitHub Pages.
 
-<link rel="stylesheet" href="/assets/css/style.scss">
+<link rel="stylesheet" href="/docs/assets/css/style.scss">
 
 <div class="sidebar">
     <ul>
