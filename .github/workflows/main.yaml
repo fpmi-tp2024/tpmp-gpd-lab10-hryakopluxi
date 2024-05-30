@@ -24,6 +24,7 @@ jobs:
         -project 'Lab10/Lab10.xcodeproj' \
         -scheme 'Lab10' \
         -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' \
+        -allowProvisioningUpdates \
         clean test
 
     - name: Build project
