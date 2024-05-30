@@ -20,19 +20,17 @@ jobs:
 
     - name: Run tests
       run: |
-        xcodebuild test \
-          -scheme Lab10 \
-          -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' \
-          -workspace Lab10/Lab10.xcworkspace \
-          -derivedDataPath Build/ \
-          ONLY_ACTIVE_ARCH=YES
+        xcodebuild  \
+        -project 'Lab10/Lab10.xcodeproj' \
+        -scheme 'Lab10' \
+        -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' \
+        clean test
 
     - name: Build project
       if: success()
       run: |
-        xcodebuild build \
-          -scheme Lab10 \
-          -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' \
-          -workspace Lab10/Lab10.xcworkspace \
-          -derivedDataPath Build/ \
-          ONLY_ACTIVE_ARCH=YES
+        xcodebuild \
+        -project 'Lab10/Lab10.xcodeproj' \
+        -scheme 'Lab10' \
+        -destination 'generic/platform=iOS' \
+        -configuration Release build CODE_SIGNING_ALLOWED=NO
