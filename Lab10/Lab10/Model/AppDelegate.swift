@@ -20,10 +20,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initializeDatabase() {
-        guard let databasePath = Bundle.main.path(forResource: "database", ofType: "db") else {
-            fatalError("Db file not found")
+        // Get the path to the Documents directory
+        let fileManager = FileManager.default
+        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            fatalError("Unable to access documents directory")
         }
         
+        let databasePath = documentsDirectory.appendingPathComponent("database.db").path
+        
+        // Check if the database file already exists in the Documents directory
+        if !fileManager.fileExists(atPath: databasePath) {
+            // If it does not exist, copy it from the bundle
+            guard let bundleDatabasePath = Bundle.main.path(forResource: "database", ofType: "db") else {
+                fatalError("Db file not found in bundle")
+            }
+            
+            do {
+                try fileManager.copyItem(atPath: bundleDatabasePath, toPath: databasePath)
+                print("Database file copied to documents directory")
+            } catch {
+                fatalError("Unable to copy database file: \(error.localizedDescription)")
+            }
+        } else {
+            print("Database file already exists in documents directory")
+        }
+        
+        // Open the database from the Documents directory
         dbManager.openDatabase(path: databasePath)
     }
 

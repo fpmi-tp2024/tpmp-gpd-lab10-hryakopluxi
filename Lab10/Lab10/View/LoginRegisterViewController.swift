@@ -1,6 +1,23 @@
 import Foundation
 import UIKit
 import CoreLocation
+import CommonCrypto
+
+extension String {
+    func md5() -> String {
+        let length = Int(CC_MD5_DIGEST_LENGTH)
+        let messageData = self.data(using:.utf8)!
+        var digestData = Data(count: length)
+        
+        _ = digestData.withUnsafeMutableBytes { digestBytes in
+            messageData.withUnsafeBytes { messageBytes in
+                CC_MD5(messageBytes, CC_LONG(messageData.count), digestBytes)
+            }
+        }
+        
+        return digestData.map { String(format: "%02hhx", $0) }.joined()
+    }
+}
 
 class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
     
@@ -145,10 +162,9 @@ class LoginRegisterViewController: UIViewController, ClinicSelectionDelegate {
             self.performSegue(withIdentifier: "showInfo", sender: ClientSession.shared.currentUser)
         }
     }
-    
+
     func hashPassword(_ password: String) -> String {
-        // Implement password hashing
-        return password // Placeholder
+        return password.md5()
     }
     
     func addressToCoords(address: String, completion: @escaping (CLLocationCoordinate2D?, Error?) -> Void) {

@@ -4,7 +4,7 @@ import SQLite3
 class DatabaseManager {
     static let shared = DatabaseManager()
     
-    private var db: OpaquePointer?
+    var db: OpaquePointer?
     
     deinit {
         sqlite3_close(db)
@@ -16,7 +16,7 @@ class DatabaseManager {
         }
     }
     
-    private func executeQuery(_ query: String) {
+    func executeQuery(_ query: String) {
         var stmt: OpaquePointer?
         if sqlite3_prepare_v2(db, query, -1, &stmt, nil) == SQLITE_OK {
             if sqlite3_step(stmt) != SQLITE_DONE {
@@ -28,9 +28,21 @@ class DatabaseManager {
         sqlite3_finalize(stmt)
     }
     
+    private func beginTransaction() {
+        executeQuery("BEGIN TRANSACTION;")
+    }
+    
+    private func commitTransaction() {
+        executeQuery("COMMIT;")
+    }
+    
+    private func rollbackTransaction() {
+        executeQuery("ROLLBACK;")
+    }
+    
     // CRUD operations for users
     func addUser(_ user: Client) -> Int {
-        let insertQuery = "INSERT INTO client (login, pass_hash, clinic_id, name, address, address_coords) VALUES (?, ?, ?, ?, ?, ?);"
+        let insertQuery = "INSERT INTO client (login, pass_hash, clinic_id, name, address) VALUES (?, ?, ?, ?, ?);"
         
         var stmt: OpaquePointer?
         
@@ -42,9 +54,11 @@ class DatabaseManager {
             sqlite3_bind_text(stmt, 5, (user.address as NSString).utf8String, -1, nil)            
             if sqlite3_step(stmt) != SQLITE_DONE {
                 print("Insert failed: \(String(cString: sqlite3_errmsg(db)))")
+                return -3
             }
         } else {
             print("Error preparing insert: \(String(cString: sqlite3_errmsg(db)))")
+            return -2
         }
         
         sqlite3_finalize(stmt)
@@ -105,8 +119,9 @@ class DatabaseManager {
         return nil
     }
     // CRUD operations for clinics
-    func addClinic(_ clinic: Clinic) {
-        let insertQuery = "INSERT INTO clinic (name, address, address_cords, is_pediatric, is_hospital) VALUES (?, ?, ?, ?, ?);"
+    func addClinic(_ clinic: Clinic) -> Int {
+        beginTransaction()
+        let insertQuery = "INSERT INTO clinic (name, address, address_coords, is_pediatric, is_hospital) VALUES (?, ?, ?, ?, ?);"
         
         var stmt: OpaquePointer?
         
@@ -118,13 +133,19 @@ class DatabaseManager {
             sqlite3_bind_int(stmt, 5, clinic.isHospital ? 1 : 0)
             
             if sqlite3_step(stmt) != SQLITE_DONE {
+                rollbackTransaction()
                 print("Insert failed: \(String(cString: sqlite3_errmsg(db)))")
+                return -1
             }
         } else {
+            rollbackTransaction()
             print("Error preparing insert: \(String(cString: sqlite3_errmsg(db)))")
+            return -1
         }
         
+        commitTransaction()
         sqlite3_finalize(stmt)
+        return Int(sqlite3_last_insert_rowid(db))
     }
     
     func getAllClinics() -> [Clinic] {
@@ -239,12 +260,14 @@ class DatabaseManager {
             sqlite3_bind_text(stmt, 5, (appointment.date.description as NSString).utf8String, -1, nil)
             
             if sqlite3_step(stmt) != SQLITE_DONE {
+                rollbackTransaction()
                 print("Insert failed: \(String(cString: sqlite3_errmsg(db)))")
                 return -1
             }
             return Int(sqlite3_last_insert_rowid(db))
         }
         
+        rollbackTransaction()
         print("Error preparing insert: \(String(cString: sqlite3_errmsg(db)))")
         sqlite3_finalize(stmt)
         return -1
