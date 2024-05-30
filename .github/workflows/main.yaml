@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: 
+      - main
+      - dev
+  pull_request:
+    branches: 
+      - main
+      - dev
+
+jobs:
+  test-and-build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Build project
+      if: success()
+      run: |
+        xcodebuild \
+        -project 'Lab10/Lab10.xcodeproj' \
+        -scheme 'Lab10' \
+        -destination 'generic/platform=iOS' \
+        -configuration Release build CODE_SIGNING_ALLOWED=NO

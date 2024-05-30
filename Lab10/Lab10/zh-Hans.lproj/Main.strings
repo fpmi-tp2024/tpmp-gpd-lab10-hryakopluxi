@@ -1,0 +1,161 @@
+/* Class = "UITextField"; placeholder = "First name"; ObjectID = "0b7-Ro-Ta4"; */
+"0b7-Ro-Ta4.placeholder" = "名字";
+
+/* Class = "UIButton"; configuration.title = "Choose hospital"; ObjectID = "2NM-vT-cpR"; */
+"2NM-vT-cpR.configuration.title" = "选择医院";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "2NM-vT-cpR"; */
+"2NM-vT-cpR.normalTitle" = "按钮";
+
+/* Class = "UILabel"; text = "Agree with terms"; ObjectID = "3s2-2C-Kbf"; */
+"3s2-2C-Kbf.text" = "同意条款";
+
+/* Class = "UITextField"; placeholder = "City"; ObjectID = "4bM-YZ-wiH"; */
+"4bM-YZ-wiH.placeholder" = "城市";
+
+/* Class = "UIButton"; configuration.title = "Choose on map"; ObjectID = "7b0-9u-tst"; */
+"7b0-9u-tst.configuration.title" = "在地图上选择";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7b0-9u-tst"; */
+"7b0-9u-tst.normalTitle" = "按钮";
+
+/* Class = "UILabel"; text = "Edit Appointement"; ObjectID = "8fE-gi-kis"; */
+"8fE-gi-kis.text" = "编辑预约";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Enn-8u-lGT"; */
+"Enn-8u-lGT.text" = "标签";
+
+/* Class = "UITextField"; placeholder = "Street"; ObjectID = "FFj-ew-j2p"; */
+"FFj-ew-j2p.placeholder" = "街道";
+
+/* Class = "UILabel"; text = "Appointement"; ObjectID = "FcK-2r-KbZ"; */
+"FcK-2r-KbZ.text" = "预约";
+
+/* Class = "UITextField"; placeholder = "Login"; ObjectID = "K93-XD-JPe"; */
+"K93-XD-JPe.placeholder" = "登录";
+
+/* Class = "UILabel"; text = "Choose your clinic"; ObjectID = "LQh-Jd-LVB"; */
+"LQh-Jd-LVB.text" = "选择你的诊所";
+
+/* Class = "UIButton"; configuration.title = "Register"; ObjectID = "MVE-vp-wEc"; */
+"MVE-vp-wEc.configuration.title" = "注册";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "MVE-vp-wEc"; */
+"MVE-vp-wEc.normalTitle" = "按钮";
+
+/* Class = "UILabel"; text = "Department"; ObjectID = "MnZ-oq-gPJ"; */
+"MnZ-oq-gPJ.text" = "科室";
+
+/* Class = "UIButton"; configuration.title = "Edit appointment"; ObjectID = "NgF-wh-rCG"; */
+"NgF-wh-rCG.configuration.title" = "编辑预约";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "NgF-wh-rCG"; */
+"NgF-wh-rCG.normalTitle" = "按钮";
+
+/* Class = "UIButton"; configuration.title = "Sign in"; ObjectID = "ODz-Ej-BLY"; */
+"ODz-Ej-BLY.configuration.title" = "登录";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ODz-Ej-BLY"; */
+"ODz-Ej-BLY.normalTitle" = "按钮";
+
+/* Class = "UIButton"; configuration.title = "Choose"; ObjectID = "PGn-wR-bCL"; */
+"PGn-wR-bCL.configuration.title" = "选择";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PGn-wR-bCL"; */
+"PGn-wR-bCL.normalTitle" = "按钮";
+
+/* Class = "UITextField"; placeholder = "Login"; ObjectID = "Phy-hp-SWH"; */
+"Phy-hp-SWH.placeholder" = "登录";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "Q9D-ZA-Upm"; */
+"Q9D-ZA-Upm.text" = "地址";
+
+/* Class = "UILabel"; text = "Clinic"; ObjectID = "QWG-hw-hmL"; */
+"QWG-hw-hmL.text" = "诊所";
+
+/* Class = "UILabel"; text = "New Appointement"; ObjectID = "Shj-aL-EvU"; */
+"Shj-aL-EvU.text" = "新预约";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "TAT-dd-vuJ"; */
+"TAT-dd-vuJ.text" = "地址";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "UG4-H7-pvA"; */
+"UG4-H7-pvA.placeholder" = "密码";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Yme-iB-BYa"; */
+"Yme-iB-BYa.placeholder" = "密码";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "cbc-hD-e4J"; */
+"cbc-hD-e4J.text" = "日期";
+
+/* Class = "UILabel"; text = "Doctor"; ObjectID = "dyd-Xg-SF0"; */
+"dyd-Xg-SF0.text" = "医生";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "e59-Mc-Elq"; */
+"e59-Mc-Elq.text" = "时间";
+
+/* Class = "UILabel"; text = "Full Name"; ObjectID = "eR6-hU-31i"; */
+"eR6-hU-31i.text" = "全名";
+
+/* Class = "UIButton"; configuration.title = "Choose"; ObjectID = "ehp-sO-NwJ"; */
+"ehp-sO-NwJ.configuration.title" = "选择";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ehp-sO-NwJ"; */
+"ehp-sO-NwJ.normalTitle" = "按钮";
+
+/* Class = "UITextField"; placeholder = "№"; ObjectID = "fIM-hj-CpQ"; */
+"fIM-hj-CpQ.placeholder" = "号码";
+
+/* Class = "UIButton"; configuration.title = "Get appointment"; ObjectID = "gCx-up-Z79"; */
+"gCx-up-Z79.configuration.title" = "获取预约";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gCx-up-Z79"; */
+"gCx-up-Z79.normalTitle" = "按钮";
+
+/* Class = "UIButton"; configuration.title = "Edit"; ObjectID = "gIg-A6-LCQ"; */
+"gIg-A6-LCQ.configuration.title" = "编辑";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gIg-A6-LCQ"; */
+"gIg-A6-LCQ.normalTitle" = "按钮";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "iri-SF-l17"; */
+"iri-SF-l17.text" = "地址";
+
+/* Class = "UILabel"; text = "Hospital"; ObjectID = "j6K-7K-zLJ"; */
+"j6K-7K-zLJ.text" = "医院";
+
+/* Class = "UILabel"; text = "Hospital"; ObjectID = "lbp-0Y-Bkt"; */
+"lbp-0Y-Bkt.text" = "医院";
+
+/* Class = "UIButton"; configuration.title = "Choose Department"; ObjectID = "nGV-Wu-esa"; */
+"nGV-Wu-esa.configuration.title" = "选择科室";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "nGV-Wu-esa"; */
+"nGV-Wu-esa.normalTitle" = "按钮";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ndK-ef-u9A"; */
+"ndK-ef-u9A.text" = "标签";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "qfn-Nb-53P"; */
+"qfn-Nb-53P.text" = "地址";
+
+/* Class = "UIButton"; configuration.title = "New Appointment"; ObjectID = "rPD-A8-qCt"; */
+"rPD-A8-qCt.configuration.title" = "新预约";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rPD-A8-qCt"; */
+"rPD-A8-qCt.normalTitle" = "按钮";
+
+/* Class = "UILabel"; text = "Clinic"; ObjectID = "sJ2-bD-eJK"; */
+"sJ2-bD-eJK.text" = "诊所";
+
+/* Class = "UISegmentedControl"; tUi-gf-Pk4.segmentTitles[0] = "Login"; ObjectID = "tUi-gf-Pk4"; */
+"tUi-gf-Pk4.segmentTitles[0]" = "登录";
+
+/* Class = "UISegmentedControl"; tUi-gf-Pk4.segmentTitles[1] = "Register"; ObjectID = "tUi-gf-Pk4"; */
+"tUi-gf-Pk4.segmentTitles[1]" = "注册";
+
+/* Class = "UITextField"; placeholder = "Repeat password"; ObjectID = "wkI-Gg-bxP"; */
+"wkI-Gg-bxP.placeholder" = "重复密码";
+
+/* Class = "UITextField"; placeholder = "Last name"; ObjectID = "zzA-6R-epa"; */
+"zzA-6R-epa.placeholder" = "姓氏";
