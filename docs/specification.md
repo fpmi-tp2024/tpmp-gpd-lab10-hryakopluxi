@@ -13,6 +13,10 @@
 
 <img width="525" alt="Снимок экрана 2024-05-30 в 16 00 30" src="https://github.com/fpmi-tp2024/tpmp-gpd-lab10-hryakopluxi/assets/60287872/7144e873-4e4c-4351-9cfd-f3455d756ee0">
 
+## Deployment diagram
+<img width="356" alt="Снимок экрана 2024-05-30 231910" src="https://github.com/fpmi-tp2024/tpmp-gpd-lab10-hryakopluxi/assets/60287872/c84d5a51-65c3-49cb-b51e-4360fb2589db">
+
+
 # Additional Specification
 
 ## 1. Constraints
