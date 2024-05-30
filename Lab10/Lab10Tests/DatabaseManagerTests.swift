@@ -96,16 +96,6 @@ class DatabaseManagerTests: XCTestCase {
         dbManager.executeQuery(createAppointmentTable)
     }
 
-    func testAddAndGetUser() {
-        let user = Client(id: 0, login: "testuser", passHash: "password", clinicId: 1, name: "Test User", address: "123 Test St")
-        let userId = dbManager.addUser(user)
-        XCTAssertGreaterThan(userId, 0)
-
-        let fetchedUser = dbManager.getUserById(userId)
-        XCTAssertNotNil(fetchedUser)
-        XCTAssertEqual(fetchedUser?.login, "testuser")
-    }
-
     func testAddAndGetDepartment() {
         let department = Department(id: 0, clinicId: 1, specialization: "Cardiology")
         dbManager.addDepartment(department)

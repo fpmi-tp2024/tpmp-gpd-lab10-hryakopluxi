@@ -14,7 +14,7 @@ class ClientInfoViewController: UIViewController {
     @IBOutlet weak var hospitalIcon: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var clinicLabel: UILabel!
-    @IBOutlet weak var changeClinicButton: UIButton!
+
     @IBOutlet weak var clientIcon: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
     
