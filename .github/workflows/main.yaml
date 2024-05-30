@@ -18,11 +18,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: |
-        sudo xcode-select --switch /Applications/Xcode_14.0.app
-        xcodebuild -version
-
     - name: Run tests
       run: |
         xcodebuild test \
