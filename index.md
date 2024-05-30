@@ -51,3 +51,17 @@ To install and run this project, follow these steps:
 * [Yulia Kanoplich](https://github.com/Juliet165) - Project Manager, Technical Writer
   - Coordinated the project development and managed timelines and deliverables.
   - Documented the application features, and technical specifications in GitHub Wiki and GitHub Pages.
+
+<link rel="stylesheet" href="/assets/css/style.scss">
+
+<div class="sidebar">
+    <ul>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/index.html">Home</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/assignment.html">Assignment</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/interface.html">App interface</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/presentation.html">Project presentation</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/specification.html">Project specification</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/requirements.html">Functional requirements</a></li>
+    </ul>
+</div>
+
