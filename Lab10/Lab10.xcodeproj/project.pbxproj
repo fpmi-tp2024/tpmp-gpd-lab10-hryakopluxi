@@ -39,6 +39,7 @@
 		670E8CEA2C079A250076BA0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 670E8C692C0477640076BA0F /* Main.storyboard */; };
 		670E8D302C08A5F70076BA0F /* DatabaseManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8D2F2C08A5F70076BA0F /* DatabaseManagerTests.swift */; };
 		670E8D342C08ACC30076BA0F /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 670E8D332C08ACC30076BA0F /* database.db */; };
+		670E8D402C08C0620076BA0F /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8D3F2C08C0620076BA0F /* ValidatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		670E8CEB2C079C740076BA0F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		670E8D2F2C08A5F70076BA0F /* DatabaseManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerTests.swift; sourceTree = "<group>"; };
 		670E8D332C08ACC30076BA0F /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.db; sourceTree = "<group>"; };
+		670E8D3F2C08C0620076BA0F /* ValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			children = (
 				670E8C7D2C0477650076BA0F /* Lab10Tests.swift */,
 				670E8D2F2C08A5F70076BA0F /* DatabaseManagerTests.swift */,
+				670E8D3F2C08C0620076BA0F /* ValidatorTests.swift */,
 			);
 			path = Lab10Tests;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				670E8D402C08C0620076BA0F /* ValidatorTests.swift in Sources */,
 				670E8D302C08A5F70076BA0F /* DatabaseManagerTests.swift in Sources */,
 				670E8C7E2C0477650076BA0F /* Lab10Tests.swift in Sources */,
 			);
