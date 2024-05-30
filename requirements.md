@@ -117,6 +117,20 @@
 
 **Preconditions:** The user is logged in and has a scheduled appointment.
 
+<link rel="stylesheet" href="/assets/css/style.scss">
+
+<div class="sidebar">
+    <ul>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/index.html">Home</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/assignment.html">Assignment</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/interface.html">App interface</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/presentation.html">Project presentation</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/specification.html">Project specification</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/requirements.html">Functional requirements</a></li>
+    </ul>
+</div>
+
+
 **Main Flow:**
 1. The user navigates to the appointments page and selects an appointment.
 2. The user cancels the appointment.
