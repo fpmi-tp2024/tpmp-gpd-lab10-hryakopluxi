@@ -18,6 +18,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Run tests
+      run: |
+        xcodebuild  \
+        -project 'Lab10/Lab10.xcodeproj' \
+        -scheme 'Lab10' \
+        -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' \
+        clean test
+
     - name: Build project
       if: success()
       run: |
