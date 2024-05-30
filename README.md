@@ -1,7 +1,10 @@
 # Сlinics
+[![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white)](https://github.com/fpmi-tp2024/tpmp-gpd-lab10-hryakopluxi/tree/main/Lab10)
+[![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)](https://github.com/fpmi-tp2024/tpmp-gpd-lab10-hryakopluxi/blob/main/Lab10/Lab10/database.db)
 [![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/fpmi-tp2024/tpmp-gpd-lab10-hryakopluxi/actions)
 [![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)](https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/)
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/ggkck9DdSH8zPiTisP3AXP/Untitled?node-id=0-1&t=83TSlUQuqbwCVoaJ-1)
+
 
 ## Description
 The Clinics application is designed to manage the process of booking medical appointments at various clinics within a city. Acting as a comprehensive aggregator, the app allows users to register and find the nearest clinic based on their location or choose from a list of available clinics. Users can view detailed information about hospitals, their departments, and specializations.
