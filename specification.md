@@ -289,3 +289,17 @@ classDiagram
 - Automated tests must be implemented to ensure code reliability and facilitate future updates.
 - The application must support seamless updates, allowing users to receive new features and security patches without disrupting their experience.
 - The application must provide a mechanism for rolling back updates in case of issues.
+
+
+<link rel="stylesheet" href="/assets/css/style.scss">
+
+<div class="sidebar">
+    <ul>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/index.html">Home</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/assignment.html">Assignment</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/interface.html">App interface</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/presentation.html">Project presentation</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/specification.html">Project specification</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/requirements.html">Functional requirements</a></li>
+    </ul>
+</div>
