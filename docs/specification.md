@@ -183,5 +183,6 @@
         <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/interface.html">App interface</a></li>
         <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/presentation.html">Project presentation</a></li>
         <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/specification.html">Project specification</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/database.html">Database scheme</a></li>
     </ul>
 </div>
