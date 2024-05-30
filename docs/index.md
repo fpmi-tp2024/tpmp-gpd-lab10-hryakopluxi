@@ -53,7 +53,6 @@ To install and run this project, follow these steps:
   - Documented the application features, and technical specifications in GitHub Wiki and GitHub Pages.
 
 <link rel="stylesheet" href="/assets/css/style.scss">
-
 <div class="sidebar">
     <ul>
         <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/index.html">Home</a></li>
