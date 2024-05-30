@@ -38,8 +38,6 @@
 		670E8D302C08A5F70076BA0F /* DatabaseManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8D2F2C08A5F70076BA0F /* DatabaseManagerTests.swift */; };
 		670E8D342C08ACC30076BA0F /* database.db in Resources */ = {isa = PBXBuildFile; fileRef = 670E8D332C08ACC30076BA0F /* database.db */; };
 		670E8D402C08C0620076BA0F /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8D3F2C08C0620076BA0F /* ValidatorTests.swift */; };
-		670E8D482C08C9A80076BA0F /* Lab10UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8D472C08C9A80076BA0F /* Lab10UITests.swift */; };
-		670E8D4A2C08C9B10076BA0F /* Lab10UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E8D492C08C9B10076BA0F /* Lab10UITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,8 +95,6 @@
 		670E8D2F2C08A5F70076BA0F /* DatabaseManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerTests.swift; sourceTree = "<group>"; };
 		670E8D332C08ACC30076BA0F /* database.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.db; sourceTree = "<group>"; };
 		670E8D3F2C08C0620076BA0F /* ValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
-		670E8D472C08C9A80076BA0F /* Lab10UITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lab10UITests.swift; path = ../../.Trash/Lab10UITests.swift; sourceTree = "<group>"; };
-		670E8D492C08C9B10076BA0F /* Lab10UITestsLaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Lab10UITestsLaunchTests.swift; path = ../../.Trash/Lab10UITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				670E8C622C0477640076BA0F /* Lab10 */,
-				670E8D462C08C9940076BA0F /* Lab10UITests */,
 				670E8C7C2C0477650076BA0F /* Lab10Tests */,
 				670E8C612C0477640076BA0F /* Products */,
 				670E8C9B2C04C1240076BA0F /* Frameworks */,
@@ -222,16 +217,6 @@
 				670E8C9C2C04C1240076BA0F /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		670E8D462C08C9940076BA0F /* Lab10UITests */ = {
-			isa = PBXGroup;
-			children = (
-				670E8D492C08C9B10076BA0F /* Lab10UITestsLaunchTests.swift */,
-				670E8D472C08C9A80076BA0F /* Lab10UITests.swift */,
-			);
-			name = Lab10UITests;
-			path = ../../../Documents/Lab10UITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,7 +364,6 @@
 				670E8CA92C04D15D0076BA0F /* ClientController.swift in Sources */,
 				670E8CCC2C05F3A60076BA0F /* CreateAppointmentViewController.swift in Sources */,
 				670E8CA52C04C64B0076BA0F /* Department.swift in Sources */,
-				670E8D4A2C08C9B10076BA0F /* Lab10UITestsLaunchTests.swift in Sources */,
 				670E8CCA2C05F3530076BA0F /* EditAppointmentViewController.swift in Sources */,
 				670E8CDB2C0737010076BA0F /* AppointmentSession.swift in Sources */,
 				670E8CAB2C04D1F90076BA0F /* ClinicController.swift in Sources */,
@@ -391,7 +375,6 @@
 				670E8CA32C04C61C0076BA0F /* Appointment.swift in Sources */,
 				670E8CB82C050E780076BA0F /* ClinicsViewController.swift in Sources */,
 				670E8C9F2C04C35B0076BA0F /* Client.swift in Sources */,
-				670E8D482C08C9A80076BA0F /* Lab10UITests.swift in Sources */,
 				670E8CB02C04D6640076BA0F /* DepartmentController.swift in Sources */,
 				670E8C9A2C04C00E0076BA0F /* DatabaseManager.swift in Sources */,
 				670E8C6E2C0477640076BA0F /* Lab10.xcdatamodeld in Sources */,
