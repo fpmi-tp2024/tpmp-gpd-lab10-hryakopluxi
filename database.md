@@ -13,3 +13,16 @@
 
 ### Department
 <img width="364" alt="Снимок экрана 2024-05-30 в 12 25 30" src="https://github.com/fpmi-tp2024/tpmp-gpd-lab10-hryakopluxi/assets/60287872/d6635eea-f775-4b49-bf47-b1df2ff879c3">
+
+<link rel="stylesheet" href="/assets/css/style.scss">
+
+<div class="sidebar">
+    <ul>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/index.html">Home</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/assignment.html">Assignment</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/interface.html">App interface</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/presentation.html">Project presentation</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/specification.html">Project specification</a></li>
+        <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/database.html">Database scheme</a></li>
+    </ul>
+</div>
