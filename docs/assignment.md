@@ -7,7 +7,6 @@ The application should also provide a list of city hospitals and their departmen
 Registration data can be stored locally or an external service can be used. Additional functionality is welcome. Data should be stored in an SQLite database. Use UserDefaults (NSUserDefaults) or plist.
 
 <link rel="stylesheet" href="/docs/assets/css/style.scss">
-
 <div class="sidebar">
     <ul>
         <li><a href="https://fpmi-tp2024.github.io/tpmp-gpd-lab10-hryakopluxi/index.html">Home</a></li>
